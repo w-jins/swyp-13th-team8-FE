@@ -1,4 +1,4 @@
-import { check, edit } from '../../assets/index';
+import { edit, stepCheck } from '../../assets/index';
 
 interface StepBarProps {
   steps: string[];
@@ -51,7 +51,7 @@ const StepBar = ({ steps = [], currentStep }: StepBarProps) => {
                 isWaiting ? 'bg-white border-gray-scale-20' : 'bg-primary-50 border-primary-50'
               }`}
             >
-              {isDone && <img src={check} alt="완료" className="w-4 h-4" />}
+              {isDone && <img src={stepCheck} alt="완료" className="w-4 h-4" />}
               {isActive && <img src={edit} alt="진행중" className="w-4 h-4" />}
               {isWaiting && <span className="text-sm font-semibold text-gray-scale-40">{index + 1}</span>}
             </div>

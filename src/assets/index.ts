@@ -28,10 +28,12 @@ export { default as close } from './icons/close.svg';
 export { default as historyHover } from './icons/history_hover.svg';
 export { default as history } from './icons/history.svg';
 export { default as sidemenu } from './icons/side_menu.svg';
-export { default as stepCheck } from './icons/step_check.svg';
+export { default as stepCheck } from './icons/stepper_complete20.svg';
 export { default as upload } from './icons/upload20.svg';
 export { default as warning } from './icons/message-warn16.svg';
 export { default as historyEmpty } from './icons/history_empty.svg';
+export { default as breadcrumbHome } from './icons/breadcrumb_home16.svg';
+export { default as mypagePlusBtn } from './icons/mypage_inslist_btn_plus_default.svg';
 
 // 로고
 export { default as logo } from './icons/logo.svg';

@@ -5,6 +5,8 @@ import InsuranceDetailModal from './InsuranceDetailModal';
 import api from '../../../../api/axios';
 import { useNavigate } from 'react-router';
 import InsuranceCard from './InsuranceCard';
+import CImg from '../../../../components/common/CImg';
+import { mypagePlusBtn } from '../../../../assets';
 
 const InsurancePage = () => {
   const navigate = useNavigate();
@@ -52,12 +54,12 @@ const InsurancePage = () => {
         </div>
       )}
 
-      <button
+      <CImg
         onClick={() => navigate('/mypage/insurance/add')}
-        className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary-50 text-white text-2xl flex items-center justify-center shadow-lg hover:bg-primary-60 transition-colors"
-      >
-        +
-      </button>
+        className="fixed bottom-8 right-8 w-14 h-14 rounded-full text-2xl flex items-center justify-center transition-colors"
+        src={mypagePlusBtn}
+        alt="플러스"
+      />
 
       {selectedInsurance && <InsuranceDetailModal insurance={selectedInsurance} onClose={() => setSelectedInsurance(null)} />}
     </div>
