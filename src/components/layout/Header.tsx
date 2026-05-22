@@ -1,38 +1,16 @@
 import { logo, sideMenu } from '../../assets/index.ts';
 import CButton from '../common/CButton';
 import CImg from '../common/CImg';
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink } from 'react-router';
 import { useModalStore } from '../../store/useModalStore.ts';
 import { useUserQuery } from '../../hooks/useUserQuery.ts';
-import { logoutAPI } from '../../api/authApi';
-import { useAuthStore } from '../../store/useAuthStore.ts';
-import { useQueryClient } from '@tanstack/react-query';
-import { useUserStore } from '../../store/useUserStore.ts';
 
 const Header = () => {
   // 필요한 훅 불러옴
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
   const { data } = useUserQuery();
 
   // Zustand 액션 함수
   const openModal = useModalStore((state) => state.openModal);
-  const { refreshToken, clearToken } = useAuthStore();
-  const setUserInfo = useUserStore((state) => state.setUserInfo);
-
-  const logoutClickHandler = async () => {
-    const res = await logoutAPI(refreshToken);
-
-    if (res.code === 200) {
-      clearToken();
-      setUserInfo({ userId: null, name: '', email: '', profileImageUrl: '' });
-
-      queryClient.removeQueries({ queryKey: ['userInfo'] });
-      alert('로그아웃 되었습니다!');
-
-      navigate('/home');
-    }
-  };
 
   return (
     <header className="flex w-full h-17 shrink-0 items-center justify-center border-b p-4 border-gray-scale-20 bg-white md:justify-between">
@@ -54,7 +32,7 @@ const Header = () => {
             <span className="text-gray-scale-50 text-body-s-r">님</span>
           </div>
           <CButton
-            onClick={logoutClickHandler}
+            onClick={() => openModal('LOGOUT')}
             className="py-1.5 px-2 text-[11px] md:rounded-sm border cursor-pointer border-gray-scale-20 text-gray-scale-50 "
             children="로그아웃"
           />
