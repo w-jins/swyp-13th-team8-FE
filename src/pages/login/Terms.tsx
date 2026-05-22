@@ -63,8 +63,8 @@ const Terms = () => {
       {/* 메인 */}
       <div className="flex flex-col gap-6">
         <p className="text-title-h2">서비스 이용 약관 동의</p>
-        <div className="flex flex-col items-center justify-center gap-10 px-45 py-15 border border-gray-scale-20 rounded-[40px] bg-white">
-          <div className="flex h-30 gap-15 w-full">
+        <div className="flex flex-col items-center justify-center px-45 py-10 border border-gray-scale-20 rounded-[40px] bg-white">
+          <div className="flex justify-between w-full">
             <p className="text-title-h2 inline-block self-end">
               원활한 실손핏 서비스 이용을 위해 <br />
               <span className="text-primary-50">약관 내용에 동의</span>가 필요해요.
