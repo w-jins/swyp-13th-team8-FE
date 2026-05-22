@@ -14,7 +14,7 @@ const CModal = ({ cancel = false, onClose, label, children }: ModlaProps) => {
 
   return (
     <div className="fixed inset-0 bg-gray-scale-100/25 z-999">
-      <div className={`${baseStyle} ${cancel ? '' : 'py-20'}`}>
+      <div className={`${baseStyle}`}>
         {cancel ? (
           <div className="flex justify-between w-full ">
             <p className="text-title-h3">{label}</p>

@@ -46,7 +46,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
   });
   const analysisStartHandler = () => {
     setIsLoading(true); // 로딩 화면 켜기
-
+    openModal('LOADING');
     sseConnectAPI(
       // 💡 1. SSE 파이프 연결이 성공했을 때 실행되는 함수
       async (id) => {
@@ -92,18 +92,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
         }`}
     >
       <input {...getInputProps()} />
-      {isLoading && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
-          {/* 빙글빙글 도는 스피너 애니메이션 (Tailwind) */}
-          <div className="h-14 w-14 animate-spin rounded-full border-4 border-primary-20 border-t-primary-50"></div>
 
-          {/* 로딩 텍스트 */}
-          <div className="mt-5 flex flex-col items-center gap-2 text-center text-white">
-            <p className="text-title-h3 font-bold">AI가 약관을 꼼꼼하게 분석하고 있어요</p>
-            <p className="text-body-m-r text-gray-scale-30">잠시만 기다려주세요 (최대 1~2분 소요)</p>
-          </div>
-        </div>
-      )}
       {/* 파일이 업로드되었을 때 보여줄 UI */}
       {uploadedFile ? (
         <div className="flex flex-col items-center gap-5">
