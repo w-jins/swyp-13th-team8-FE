@@ -8,7 +8,7 @@ import { useAuthStore } from '../../../store/useAuthStore';
 import { useAnalysisStore } from '../../../store/useAnalysisStore';
 import { useNavigate } from 'react-router';
 import { useCalcStore } from '../../../store/useCalcStore';
-import { insadd, insurance, pdf, upload } from '../../../assets';
+import { insadd, pdf, upload } from '../../../assets';
 
 interface PdfUploaderProps {
   name: string;
@@ -113,10 +113,10 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
             <p className="text-body-m-r text-gray-scale-50">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
           </div>
           <div className="flex gap-3 mt-2">
-            <CButton onClick={() => setUploadedFile(null)} className="px-5 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
-              <p>삭제</p>
+            <CButton onClick={() => setUploadedFile(null)} className="px-5 py-3 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
+              삭제
             </CButton>
-            <CButton onClick={analysisStartHandler} className="px-5 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
+            <CButton onClick={analysisStartHandler} className="px-5 py-3 rounded-2xl bg-primary-50 text-white cursor-pointer">
               분석 시작하기
             </CButton>
           </div>
@@ -129,10 +129,10 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
             <p className="text-title-h3 text-gray-scale-80">{insuranceInfo.productName}</p>
           </div>
           <div className="flex gap-3 mt-2">
-            <CButton onClick={() => resetStore()} className="px-5 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
+            <CButton onClick={() => resetStore()} className="px-5 py-3 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
               취소
             </CButton>
-            <CButton onClick={analysisStartHandler} className="px-5 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
+            <CButton onClick={analysisStartHandler} className="px-5 py-3 rounded-2xl bg-primary-50 text-white cursor-pointer">
               분석 시작하기
             </CButton>
           </div>
@@ -162,7 +162,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
                 name ? 'bg-primary-50 cursor-pointer' : 'bg-gray-scale-40 cursor-not-allowed'
               }`}
             >
-              <CImg className="w-5 h-5" src={insurance} alt="불러오기" />
+              <CImg className="w-5 h-5" src="" alt="불러오기" />
               <p>내 보험에서 불러오기</p>
             </CButton>
           </div>

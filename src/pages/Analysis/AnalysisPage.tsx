@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { historyEmpty, right } from '../../assets';
+import { right } from '../../assets';
 import CBreadcrumb from '../../components/common/CBreadcrumb';
 import CButton from '../../components/common/CButton';
 import CImg from '../../components/common/CImg';
@@ -52,8 +52,8 @@ const Analysis = () => {
               {userInfo !== '' ? (
                 <HistoryAnalysis />
               ) : (
-                <div className="flex flex-col h-full items-center justify-center gap-3">
-                  <CImg className="w-20 h-20" src={historyEmpty} alt="로고" />
+                <div className="flex flex-col h-full items-center justify-center">
+                  <CImg className="w-15 h-15" src="" alt="로고" />
                   <p className="text-gray-scale-40 text-body-m-m">로그인 후 분석 내역을 확인하세요.</p>
                 </div>
               )}
