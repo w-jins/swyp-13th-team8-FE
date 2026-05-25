@@ -3,23 +3,6 @@
  * value 는 수정대상
  */
 
-import {
-  basic,
-  basicActive,
-  ct,
-  ctActive,
-  injection,
-  injectionActive,
-  lithotherapy,
-  lithotherapyActive,
-  manual,
-  manualActive,
-  mri,
-  mriActive,
-  physical,
-  physicalActive,
-} from '../assets';
-
 export const VISIT_TYPE = [
   { label: '외래', value: 'OUTPATIENT' },
   { label: '입원', value: 'INPATIENT' },
@@ -46,13 +29,13 @@ export const HOSPITAL_TYPE = [
 ];
 
 export const TREATMENT_CATEGORY = [
-  { label: 'MRI', value: 'MRI', src: mri, active: mriActive },
-  { label: 'CT', value: 'CT', src: ct, active: ctActive },
-  { label: '주사', value: 'INJECTION', src: injection, active: injectionActive },
-  { label: '체외충격파', value: 'SHOCKWAVE_THERAPY', src: lithotherapy, active: lithotherapyActive },
-  { label: '도수치료', value: 'CHIROPRACTIC', src: manual, active: manualActive },
-  { label: '물리치료', value: 'PHYSICAL_THERAPY', src: physical, active: physicalActive },
-  { label: '일반진료', value: 'GENERAL', src: basic, active: basicActive },
+  { label: 'MRI', value: 'MRI' },
+  { label: 'CT', value: 'CT' },
+  { label: '주사', value: 'INJECTION' },
+  { label: '체외충격파', value: 'SHOCKWAVE_THERAPY' },
+  { label: '도수치료', value: 'CHIROPRACTIC' },
+  { label: '물리치료', value: 'PHYSICAL_THERAPY' },
+  { label: '일반진료', value: 'GENERAL' },
 ] as const;
 
 // 사용할 타입들 추출 (export 필수)

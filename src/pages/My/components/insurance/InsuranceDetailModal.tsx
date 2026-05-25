@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import api from '../../../../api/axios';
 import type { Insurance } from '../../../../hooks/useInsurance.ts';
-import useCompanyImg from '../../../../hooks/useCompanyImg.ts';
-import CImg from '../../../../components/common/CImg.tsx';
 
 interface InsuranceDetail {
   userInsuranceId: number;
@@ -41,8 +39,6 @@ const InsuranceDetailModal = ({ insurance, onClose }: Props) => {
     };
     fetchDetail();
   }, [insurance.userInsuranceId]);
-
-  const insuranceCompany = useCompanyImg(detail?.companyName);
 
   const toggleKey = (key: string) => {
     setOpenKeys((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
@@ -84,7 +80,9 @@ const InsuranceDetailModal = ({ insurance, onClose }: Props) => {
               </div>
 
               <div className="flex items-center gap-3 mb-5">
-                <CImg className="w-10 h-10" src={insuranceCompany?.src} alt="보험사" />
+                <div className="w-[55px] h-[55px] bg-blue-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-[11px] font-bold">{detail.companyName}</span>
+                </div>
                 <div>
                   <p className="text-title-h3 font-bold">{detail.productName}</p>
                   <p className="text-body-s-r text-gray-scale-40 mt-1">

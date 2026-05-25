@@ -5,24 +5,26 @@ import { getInsuranceList } from '../../api/Insurance';
 import type { InsurancesListResponse } from '../../type/responseType';
 import { useCalcStore } from '../../store/useCalcStore';
 import { useLocation, useNavigate } from 'react-router';
-import InsuranceModalCard from './InsuranceModalCard';
-import type { Insurance } from '../../hooks/useInsurance';
+import CLabel from '../common/CLabel';
 
 interface InsuranceModalProps {
   onClose: () => void;
 }
 
 const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
-  // 보험에 필요한 값을 하나의 state로 관리
-  const [selectedInsurance, setSelectedInsurance] = useState<Insurance | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [companyName, setcompanyName] = useState<string>('');
+  const [productName, setproductName] = useState<string>('');
   const [myInsurance, setMyInsurance] = useState<InsurancesListResponse | null>(null);
   const setInsuranceInfo = useCalcStore((state) => state.setInsuranceInfo);
   const location = useLocation();
 
   const navigate = useNavigate();
-  const handleSelectInsurance = (item: Insurance) => {
+  const handleSelectInsurance = (id: number, companyName: string, productName: string) => {
     // 토글 기능: 같은 카드를 다시 누르면 선택 해제
-    setSelectedInsurance((prev) => (prev?.userInsuranceId === item.userInsuranceId ? null : item));
+    setSelectedId((prev) => (prev === id ? null : id));
+    setcompanyName(companyName);
+    setproductName(productName);
   };
 
   useEffect(() => {
@@ -38,12 +40,8 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
   }, []);
 
   const onSubmit = () => {
-    if (!selectedInsurance) return;
-    setInsuranceInfo({
-      id: selectedInsurance.userInsuranceId,
-      companyName: selectedInsurance.companyName,
-      productName: selectedInsurance.productName,
-    });
+    if (!selectedId) return;
+    setInsuranceInfo({ id: selectedId, companyName: companyName, productName: productName });
     onClose();
     if (location.pathname === '/calculator') navigate('/calculator/medical-info');
   };
@@ -58,12 +56,53 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
         <div className="mt-2 grid grid-cols-2 gap-4">
           {/* 카드 1: 내 보험 불러오기 */}
           {myInsurance?.insurances.map((items) => (
-            <InsuranceModalCard
+            <div
               key={items.userInsuranceId}
-              item={items}
-              isSelected={selectedInsurance?.userInsuranceId === items.userInsuranceId}
-              onSelect={handleSelectInsurance}
-            />
+              onClick={() => handleSelectInsurance(items.userInsuranceId, items.companyName, items.productName)}
+              className={`flex cursor-pointer flex-col gap-4 rounded-2xl border p-5 transition-all duration-200 min-h-[160px]
+              ${
+                selectedId === items.userInsuranceId
+                  ? 'border-primary-50 bg-primary-10/10' // 선택됨
+                  : 'border-gray-scale-20 hover:border-gray-scale-30' // 기본 상태
+              }`}
+            >
+              <div className="flex gap-3">
+                {/* 로고 영역 (차후 CImg를 이용해 실제 이미지로 변경) */}
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 text-[10px] font-bold text-white"></div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-body-m-b break-keep text-gray-scale-90 line-clamp-2">{items.productName}</p>
+                  <p className="text-caption-r text-gray-scale-50 text-body-s-r">
+                    {items.companyName} · {items.joinDate}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {items.generation && (
+                  <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="generation">
+                    {items.generation}세대
+                  </CLabel>
+                )}
+
+                {items.contractType && (
+                  <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="contract">
+                    {items.contractType}
+                  </CLabel>
+                )}
+
+                {items.coverageStructure && (
+                  <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="coverage">
+                    {items.coverageStructure}
+                  </CLabel>
+                )}
+
+                {items.cautionPoint && (
+                  <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="caution">
+                    {items.cautionPoint}
+                  </CLabel>
+                )}
+              </div>
+            </div>
           ))}
 
           {/* 카드 2: 새 보험 등록하기 */}
@@ -86,9 +125,9 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
         {/* 4. 하단 선택 완료 버튼 */}
         <CButton
           onClick={onSubmit}
-          disabled={!selectedInsurance}
+          disabled={!selectedId}
           className={`mt-4 w-full rounded-xl py-4 text-center font-bold transition-colors
-            ${selectedInsurance ? 'cursor-pointer bg-primary-50 text-white hover:bg-primary-60' : 'cursor-not-allowed bg-gray-scale-30 text-gray-scale-50'}`}
+            ${selectedId ? 'cursor-pointer bg-primary-50 text-white hover:bg-primary-60' : 'cursor-not-allowed bg-gray-scale-30 text-gray-scale-50'}`}
         >
           선택하기
         </CButton>

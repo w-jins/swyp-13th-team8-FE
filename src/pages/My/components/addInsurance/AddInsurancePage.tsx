@@ -5,9 +5,9 @@ import InsuranceSelectModal from './InsuranceSelectModal';
 import { useAddInsurance } from './hooks';
 import CImg from '../../../../components/common/CImg';
 import { signup } from '../../../../assets';
-import { COMPANIES } from '../../../../constants/company';
 
 const STEPS = ['보험 정보 입력', '보험 선택', '등록 완료'];
+const COMPANIES = ['현대해상', '삼성화재', 'DB손해보험', 'KB손해보험', '메리츠화재', '기타'] as const;
 
 const AddInsurancePage = () => {
   const {
@@ -49,16 +49,15 @@ const AddInsurancePage = () => {
               <div className="flex gap-2 flex-wrap mt-5">
                 {COMPANIES.map((company) => (
                   <button
-                    key={company.value}
-                    onClick={() => setSelectedCompany(company.value)}
-                    className={`flex gap-1 w-[120px] h-[50px] p-4 rounded-[13px] items-center justify-center text-body-s-m border transition-colors mb-10 ${
-                      selectedCompany === company.value
+                    key={company}
+                    onClick={() => setSelectedCompany(company)}
+                    className={`flex w-[120px] h-[50px] p-5 rounded-[13px] items-center justify-center text-body-s-m border transition-colors mb-10 ${
+                      selectedCompany === company
                         ? 'bg-primary-10 text-primary-50 border-primary-50'
                         : 'bg-white text-gray-scale-60 border-gray-scale-20 hover:border-primary-30'
                     }`}
                   >
-                    {company.value !== '기타' ? <CImg className="w-5 h-5 rounded-3xl border border-gray-scale-10" src={company.src} alt="" /> : <></>}
-                    {company.value}
+                    {company}
                   </button>
                 ))}
               </div>

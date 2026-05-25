@@ -1,13 +1,13 @@
-import { bannerLanding } from '../../../assets';
-import CImg from '../../../components/common/CImg';
-
 /**
  * 왼쪽 아래 가이드 배너
  */
 const GuideBanner = () => {
   return (
-    <div className="max-w-98.75 h-full rounded-3xl">
-      <CImg className="w-full h-full rounded-3xl" src={bannerLanding} alt="랜딩페이지 이동" />
+    <div className="flex items-end w-69.5 h-full bg-gray-scale-30 rounded-3xl p-8">
+      <div>
+        캐릭터 투명 배너 <br />
+        (가이드(랜딩페이지)로 이동)
+      </div>
     </div>
   );
 };
