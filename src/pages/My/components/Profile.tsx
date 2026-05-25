@@ -68,8 +68,11 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between w-[420px] h-[72px] mt-5 px-7 rounded-2xl bg-primary-5 border border-primary-20 cursor-pointer hover:bg-primary-10 transition-colors">
-        <span className="text-primary-50 font-bold text-[15px]">가이드 바로가기 (수정예정)</span>
+      <div
+        onClick={() => navigate('/guide')}
+        className="flex items-center justify-between w-[420px] h-[72px] mt-5 px-7 rounded-2xl bg-primary-5 border border-primary-20 cursor-pointer hover:bg-primary-10 transition-colors"
+      >
+        <span className="text-primary-50 font-bold text-[15px]">가이드 바로가기</span>
         <span className="text-primary-30">〉</span>
       </div>
 

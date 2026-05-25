@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { home } from '../../assets';
+import { breadcrumbHome } from '../../assets';
 
 interface BreadcrumbItem {
   label: string;
@@ -16,7 +16,7 @@ const CBreadcrumb: React.FC<BreadcrumbProps> = ({ items = [] }) => {
   return (
     <div className="flex items-center gap-1 mt-4">
       <div className="flex items-center gap-1 cursor-pointer" onClick={() => navigate('/home')}>
-        <img src={home} alt="홈" className="w-4 h-4" />
+        <img src={breadcrumbHome} alt="홈" className="w-4 h-4" />
         <span className="text-gray-scale-60 text-body-s-r underline">홈</span>
       </div>
 
