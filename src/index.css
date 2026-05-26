@@ -46,6 +46,7 @@
   --color-red-scale-40: #f53933;
 
   /* Figma 가이드 기준 브레이크포인트 설정 */
+  --breakpoint-sm: 390px;
   --breakpoint-md: 768px; /* Tablet */
   --breakpoint-xl: 1440px; /* Desktop */
   --breakpoint-2xl: 1920px; /* Large Desktop */
