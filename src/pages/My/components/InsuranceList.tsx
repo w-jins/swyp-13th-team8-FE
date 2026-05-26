@@ -6,6 +6,7 @@ import { right, plus } from '../../../assets/';
 import useInsurance, { type Insurance } from '../../../hooks/useInsurance';
 import InsuranceDetailModal from './insurance/InsuranceDetailModal';
 import { useAuthStore } from '../../../store/useAuthStore';
+import useCompanyImg from '../../../hooks/useCompanyImg';
 
 const InsuranceList = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const InsuranceList = () => {
   const firstInsurance = insurances[0];
   const isLogin = !!useAuthStore((state) => state.accessToken);
   const [selectedInsurance, setSelectedInsurance] = useState<Insurance | null>(null);
+
+  const insuranceCompany = useCompanyImg(firstInsurance?.companyName);
 
   return (
     <div className="flex-1">
@@ -28,7 +31,7 @@ const InsuranceList = () => {
         {firstInsurance && (
           <div className="w-[450px] h-[250px] bg-primary-0 rounded-[24px] border border-gray-scale-0 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start">
-              <div className="w-[55px] h-[55px] bg-gray-scale-30 rounded-full border border-gray-scale-10 overflow-hidden"></div>
+              <CImg className="w-10 h-10" src={insuranceCompany?.src} alt="보험사" />
               <button className="p-2 -m-2 rounded-full transition-colors cursor-pointer" onClick={() => setSelectedInsurance(firstInsurance)}>
                 <CImg src={right} alt="상세보기" className="w-8 h-8 opacity-30" />
               </button>

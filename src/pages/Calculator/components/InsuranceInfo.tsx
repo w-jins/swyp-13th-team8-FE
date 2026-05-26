@@ -53,9 +53,9 @@ const InsuranceInfo = () => {
 
   return (
     <div>
-      <CContents title="환급금 계산기" className="!bg-transparent !border-none">
+      <CContents title="환급금 계산기" className="!bg-transparent !border-none !p-0">
         {isLogin ? (
-          <div className="h-90 bg-primary-10 rounded-2xl mx-5 -mt-2 flex items-center justify-center text-center border border-primary-30">
+          <div className="h-90 bg-primary-10 rounded-2xl   flex items-center justify-center text-center border border-primary-20">
             <div className="flex flex-col items-center gap-1">
               <CImg className="pb-2" src={calculatorSelect} alt="사진" />
               <p className="text-title-h3 leading-relaxed mb-2 tracking-tight">계산에 적용할 보험을 선택해주세요.</p>
@@ -66,7 +66,7 @@ const InsuranceInfo = () => {
             </div>
           </div>
         ) : (
-          <div className="h-90 bg-primary-10 rounded-2xl mx-5 -mt-2 flex items-center justify-center text-center border border-primary-30">
+          <div className="h-90 bg-primary-10 rounded-2xl  flex items-center justify-center text-center border border-primary-20">
             <div className="flex flex-col items-center">
               <p className="text-title-h3 leading-relaxed mb-2 tracking-tight">로그인하여 환급금 계산을 해보세요!</p>
               <p className="text-gray-scale-50 text-body-m-m mb-2">선택한 보험의 약관을 기준으로 환급금을 계산 할 수 있어요.</p>
@@ -80,10 +80,10 @@ const InsuranceInfo = () => {
         <div className="mt-25">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-title-h2 text-gray-scale-80">분석 히스토리</span>
-              <span className="text-[12px] text-gray-scale-40">최대 n개까지 기록되며, 초과될 경우 오래된 순부터 삭제됩니다.</span>
+              <span className="text-title-h3  text-gray-scale-80">계산 히스토리</span>
+              <span className="text-[12px] text-gray-scale-40 mt-2">최대 n개까지 기록되며, 초과될 경우 오래된 순부터 삭제됩니다.</span>
             </div>
-            <button onClick={() => navigate('/mypage')} className="text-[13px] text-gray-scale-50 flex items-center gap-1 hover:text-primary-50">
+            <button onClick={() => navigate('/mypage')} className="text-[13px] text-gray-scale-50 flex items-center mx-5 hover:text-primary-50">
               전체보기 {'>'}
             </button>
           </div>
