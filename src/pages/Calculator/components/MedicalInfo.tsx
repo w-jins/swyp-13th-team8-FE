@@ -7,6 +7,8 @@ import CBreadcrumb from '../../../components/common/CBreadcrumb';
 import { useCalcStore } from '../../../store/useCalcStore';
 import { HOSPITAL_TYPE, PAY_TYPE, PURPOSE_TYPE, TREATMENT_CATEGORY, VISIT_TYPE } from '../../../constants/insurance';
 import { useEffect } from 'react';
+import { HospitalClinic, HospitalGeneral, HospitalHos } from '../../../assets';
+import CImg from '../../../components/common/CImg';
 
 const MedicalInfo = () => {
   // 2. 네비게이트 함수 선언
@@ -50,6 +52,14 @@ const MedicalInfo = () => {
       : 'border-gray-scale-10 text-gray-scale-40 hover:bg-gray-50';
   };
 
+  // HOSPITAL_TYPE의 type.value가 'clinic', 'general', 'pharmacy' 라고 가정
+  const ICON_MAP: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+    CLINIC: HospitalClinic,
+    GENERAL_HOSPITAL: HospitalGeneral,
+    TERTIARY_HOSPITAL: HospitalHos,
+    // 💡 나중에 종류가 늘어나도 여기만 추가하면 끝입니다!
+  };
+
   return (
     <div className="pb-20">
       <CBreadcrumb items={[{ label: '환급금 계산기' }]} />
@@ -69,15 +79,23 @@ const MedicalInfo = () => {
                 병원 유형 <span className="text-red-500">*</span>
               </label>
               <div className="grid grid-cols-4 gap-3">
-                {HOSPITAL_TYPE.map((type) => (
-                  <button
-                    key={type.value}
-                    onClick={() => setCalcForm({ hospitalType: type.value })}
-                    className={`py-4 rounded-xl border text-[14px] transition-all ${getSelectedClass(calcForm.hospitalType, type.value)}`}
-                  >
-                    {type.label}
-                  </button>
-                ))}
+                {HOSPITAL_TYPE.map((type) => {
+                  // 1. 현재 타입의 value('clinic' 등)에 해당하는 컴포넌트를 꺼냅니다.
+                  const IconComponent = ICON_MAP[type.value];
+
+                  return (
+                    <button
+                      key={type.value}
+                      onClick={() => setCalcForm({ hospitalType: type.value })}
+                      // 2. 아이콘과 텍스트를 세로로 예쁘게 배치하기 위해 flex 적용
+                      className={`flex flex-row items-center justify-center gap-2 py-4 rounded-xl border text-[14px] transition-all ${getSelectedClass(calcForm.hospitalType, type.value)}`}
+                    >
+                      {/* 3. 매핑된 아이콘이 존재할 때만 렌더링 */}
+                      {IconComponent && <IconComponent className="w-5 h-5 shrink-0" />}
+                      <span>{type.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </section>
 
@@ -130,12 +148,17 @@ const MedicalInfo = () => {
                     onClick={() => setCalcForm({ treatmentCategory: item.value })}
                     className="flex flex-col items-center gap-2 cursor-pointer group"
                   >
-                    <div
+                    {/* <div
                       className={`w-14 h-14 rounded-full border transition-all flex items-center justify-center ${
                         calcForm.treatmentCategory === item.value
                           ? 'bg-primary-5 border-primary-50'
                           : 'bg-gray-scale-10 border-gray-scale-20 group-hover:border-primary-50'
                       }`}
+                    /> */}
+                    <CImg
+                      className={` rounded-full  transition-all flex items-center justify-center`}
+                      src={calcForm.treatmentCategory === item.value ? item.active : item.src}
+                      alt="치료"
                     />
                     <span className={`text-[12px] ${calcForm.treatmentCategory === item.value ? 'text-primary-50 font-bold' : 'text-gray-scale-40'}`}>
                       {item.label}
