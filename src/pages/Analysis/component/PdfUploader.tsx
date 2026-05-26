@@ -16,9 +16,8 @@ interface PdfUploaderProps {
 
 const PdfUploader = ({ name }: PdfUploaderProps) => {
   const navigate = useNavigate();
-  const openModal = useModalStore((state) => state.openModal);
+  const { openModal, closeModal } = useModalStore();
   const { resetStore, insuranceInfo } = useCalcStore();
-  const [isLoading, setIsLoading] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const setAnalysisData = useAnalysisStore((state) => state.setAnalysisData);
   const isLogin = !!useAuthStore((state) => state.accessToken);
@@ -45,8 +44,8 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
     noKeyboard: true,
   });
   const analysisStartHandler = () => {
-    setIsLoading(true); // 로딩 화면 켜기
-    openModal('LOADING');
+    openModal('LOADING'); // 모달 오픈
+
     sseConnectAPI(
       // 💡 1. SSE 파이프 연결이 성공했을 때 실행되는 함수
       async (id) => {
@@ -55,7 +54,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
           await analysisAI(token, uploadedFile, id, insuranceInfo.id);
         } catch (e) {
           console.error('분석 요청 에러:', e);
-          setIsLoading(false); // 에러 나면 로딩 끄기
+          closeModal(); // 에러 나면 로딩 끄기
           alert('분석 요청에 실패했습니다.');
         }
       },
@@ -71,16 +70,17 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
 
             // 상태 업데이트 및 로딩 모달 끄기
             setAnalysisData(parsedData);
-            setIsLoading(false);
+            closeModal();
             navigate('/analysis/result');
           } catch (e) {
             console.error('데이터 파싱 중 에러 발생:', e);
-            setIsLoading(false);
+            closeModal();
           }
         }
       },
     );
   };
+
   return (
     <div
       {...getRootProps()}
