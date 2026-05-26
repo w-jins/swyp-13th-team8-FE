@@ -41,7 +41,7 @@ const Analysis = () => {
             <div className="flex justify-between">
               <p className="text-title-h3">
                 분석 히스토리
-                <span className="ml-5 text-body-s-r text-gray-scale-50">최대 n개까지 기록되며, 초과될 경우 오래된 순부터 삭제됩니다.</span>
+                <span className="ml-5 text-body-s-r text-gray-scale-50">최대 5개까지 기록되며, 초과될 경우 오래된 순부터 삭제됩니다.</span>
               </p>
               <CButton onClick={allViewClickHandler} className="flex items-center text-body-s-r text-gray-scale-50 cursor-pointer">
                 <p>전체 보기</p>

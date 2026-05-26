@@ -2,6 +2,7 @@ import JoinModal from '../../pages/login/JoinModal';
 import WithdrawModal from '../../pages/My/components/profiles/WithdrawModal';
 import { useModalStore } from '../../store/useModalStore';
 import LoginModal from '../auth/LoginModal';
+import LogoutModal from '../auth/LogoutModal';
 import InsuranceModal from '../modal/InsuranceModal';
 import LoadingModal from '../modal/LoadingModal';
 
@@ -25,6 +26,8 @@ const GlobalModal = () => {
         return <WithdrawModal onClose={closeModal} />;
       case 'LOADING':
         return <LoadingModal onClose={closeModal} />;
+      case 'LOGOUT':
+        return <LogoutModal onClose={closeModal} />;
       default:
         return null;
     }
