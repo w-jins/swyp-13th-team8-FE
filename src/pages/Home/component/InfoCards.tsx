@@ -18,7 +18,7 @@ const InfoCards = () => {
         <CImg className="absolute bottom-5 right-5 w-45" src={bannerAnalysis} alt="약관분석 이동" />
       </div>
       <div
-        onClick={() => navigate('/mypage/saved-history')}
+        onClick={() => navigate('/guide')}
         className="relative w-78.75 h-1/2 rounded-tr-[60px] rounded-bl-[60px] rounded-3xl bg-primary-10 text-primary-50 p-8 cursor-pointer"
       >
         <p className="relative text-title-h4">실손보험 가이드</p>

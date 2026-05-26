@@ -16,9 +16,8 @@ interface PdfUploaderProps {
 
 const PdfUploader = ({ name }: PdfUploaderProps) => {
   const navigate = useNavigate();
-  const openModal = useModalStore((state) => state.openModal);
+  const { openModal, closeModal } = useModalStore();
   const { resetStore, insuranceInfo } = useCalcStore();
-  const [isLoading, setIsLoading] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const setAnalysisData = useAnalysisStore((state) => state.setAnalysisData);
   const isLogin = !!useAuthStore((state) => state.accessToken);
@@ -45,7 +44,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
     noKeyboard: true,
   });
   const analysisStartHandler = () => {
-    setIsLoading(true); // 로딩 화면 켜기
+    openModal('LOADING'); // 모달 오픈
 
     sseConnectAPI(
       // 💡 1. SSE 파이프 연결이 성공했을 때 실행되는 함수
@@ -55,7 +54,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
           await analysisAI(token, uploadedFile, id, insuranceInfo.id);
         } catch (e) {
           console.error('분석 요청 에러:', e);
-          setIsLoading(false); // 에러 나면 로딩 끄기
+          closeModal(); // 에러 나면 로딩 끄기
           alert('분석 요청에 실패했습니다.');
         }
       },
@@ -71,16 +70,17 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
 
             // 상태 업데이트 및 로딩 모달 끄기
             setAnalysisData(parsedData);
-            setIsLoading(false);
+            closeModal();
             navigate('/analysis/result');
           } catch (e) {
             console.error('데이터 파싱 중 에러 발생:', e);
-            setIsLoading(false);
+            closeModal();
           }
         }
       },
     );
   };
+
   return (
     <div
       {...getRootProps()}
@@ -92,18 +92,7 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
         }`}
     >
       <input {...getInputProps()} />
-      {isLoading && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
-          {/* 빙글빙글 도는 스피너 애니메이션 (Tailwind) */}
-          <div className="h-14 w-14 animate-spin rounded-full border-4 border-primary-20 border-t-primary-50"></div>
 
-          {/* 로딩 텍스트 */}
-          <div className="mt-5 flex flex-col items-center gap-2 text-center text-white">
-            <p className="text-title-h3 font-bold">AI가 약관을 꼼꼼하게 분석하고 있어요</p>
-            <p className="text-body-m-r text-gray-scale-30">잠시만 기다려주세요 (최대 1~2분 소요)</p>
-          </div>
-        </div>
-      )}
       {/* 파일이 업로드되었을 때 보여줄 UI */}
       {uploadedFile ? (
         <div className="flex flex-col items-center gap-5">

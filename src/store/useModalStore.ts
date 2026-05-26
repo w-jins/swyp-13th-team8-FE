@@ -3,7 +3,7 @@ import { create } from 'zustand';
 /**
  * 모달 사용하는 곳의 이름을 정의하고 GlobalModal 의 renderModal 안에 조건을 적어줘야합니다!.
  */
-export type ModalType = 'LOGIN' | 'JOIN' | 'INSURANCE' | 'WITHDRAW' | 'DELETE' | 'LOADING' | null;
+export type ModalType = 'LOGIN' | 'JOIN' | 'INSURANCE' | 'WITHDRAW' | 'DELETE' | 'LOADING' | 'LOGOUT' | null;
 
 interface ModalState {
   isOpen: boolean;
