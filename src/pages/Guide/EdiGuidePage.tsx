@@ -1,4 +1,4 @@
-import { useScrollSpy } from '../../hooks/useScrollspy';
+import { useScrollSpy } from '../../hooks/useScrollSpy';
 import GuideLayout from './GuideLayout';
 
 const EdiGuidePage = () => {
