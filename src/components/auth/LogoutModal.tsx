@@ -26,6 +26,7 @@ const LogoutModal = ({ onClose }: LogoutModalProps) => {
       queryClient.removeQueries({ queryKey: ['userInfo'] });
       alert('로그아웃 되었습니다!');
 
+      onClose();
       navigate('/home');
     }
   };

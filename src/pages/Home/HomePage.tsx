@@ -22,7 +22,7 @@ const Home = () => {
         <InfoCards />
       </div>
       {/* 하단 섹션 */}
-      <div className="flex flex-row w-full h-full gap-5">
+      <div className="flex flex-row w-full gap-5">
         <GuideBanner />
         <CalculatorForm />
       </div>
