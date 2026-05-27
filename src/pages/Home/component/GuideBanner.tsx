@@ -6,7 +6,7 @@ import CImg from '../../../components/common/CImg';
  */
 const GuideBanner = () => {
   return (
-    <div className="max-w-98.75 h-full rounded-3xl">
+    <div className="flex flex-1 h-full rounded-3xl items-center justify-center md:overflow-hidden">
       <CImg className="w-full h-full rounded-3xl" src={bannerLanding} alt="랜딩페이지 이동" />
     </div>
   );

@@ -4,6 +4,7 @@ import CImg from '../common/CImg';
 import { NavLink } from 'react-router';
 import { useModalStore } from '../../store/useModalStore.ts';
 import { useUserQuery } from '../../hooks/useUserQuery.ts';
+import { useMobileStore } from '../../store/useMobileStore.ts';
 
 const Header = () => {
   // 필요한 훅 불러옴
@@ -11,11 +12,12 @@ const Header = () => {
 
   // Zustand 액션 함수
   const openModal = useModalStore((state) => state.openModal);
+  const { setOpenState } = useMobileStore();
 
   return (
     <header className="flex w-full h-17 shrink-0 items-center justify-center border-b p-4 border-gray-scale-20 bg-white md:justify-between">
       <button className="absolute left-4 mr-4 md:hidden cursor-pointer ">
-        <CImg src={sideMenu} alt="메뉴" />
+        <CImg onClick={() => setOpenState(true)} src={sideMenu} alt="메뉴" />
       </button>
       {/* 로고이미지 나올 시 src 에 기입 */}
       <NavLink key={'/home'} to={'/home'}>

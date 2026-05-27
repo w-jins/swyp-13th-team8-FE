@@ -4,7 +4,7 @@ import CImg from '../common/CImg';
 import { analysis, analysisHover, calculate, calculateHover, home, homeHover, myPage, myPageHover } from '../../assets/index.ts';
 import { useCalcStore } from '../../store/useCalcStore.ts';
 
-const SideBarItems = [
+export const SideBarItems = [
   { label: '홈', path: '/home', src: home, hover: homeHover },
   { label: '약관 분석', path: '/analysis', src: analysis, hover: analysisHover },
   { label: '환급금 계산기', path: '/calculator', src: calculate, hover: calculateHover },

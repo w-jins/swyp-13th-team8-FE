@@ -63,17 +63,17 @@ const Terms = () => {
       {/* 메인 */}
       <div className="flex flex-col gap-6">
         <p className="text-title-h2">서비스 이용 약관 동의</p>
-        <div className="flex flex-col items-center justify-center px-45 py-10 border border-gray-scale-20 rounded-[40px] bg-white">
-          <div className="flex justify-between w-full">
-            <p className="text-title-h2 inline-block self-end">
+        <div className="flex flex-col items-center justify-center md:px-15 lg:px-45 py-10 border border-gray-scale-20 rounded-[40px] bg-white">
+          <div className="flex md:w-full md:justify-between sm:justify-center sm:flex-col md:flex-row">
+            <p className="text-title-h2 inline-block md:self-end">
               원활한 실손핏 서비스 이용을 위해 <br />
               <span className="text-primary-50">약관 내용에 동의</span>가 필요해요.
             </p>
             <div>
-              <CImg className="w-70" src={terms} alt="로고 이미지" />
+              <CImg className="w-70 sm:py-5 md:py-0" src={terms} alt="로고 이미지" />
             </div>
           </div>
-          <div className="flex flex-col items-center gap-15 w-full justify-end h-115.75">
+          <div className="flex flex-col items-center sm:gap-5 md:gap-15 w-full justify-end md:h-115.75">
             <div className="flex flex-col items-center gap-8 w-full">
               <CButton
                 onClick={clickHandler}
@@ -82,8 +82,8 @@ const Terms = () => {
                 <CImg src={isAllChecked ? checkOn : check} alt="체크" />
                 <p className="text-gray-scale-70 text-title-h4">전체 내용에 동의합니다.</p>
               </CButton>
-              <span className="w-full border border-gray-scale-20"></span>
-              <div className="flex flex-col gap-6 pl-10 w-full">
+              <span className="sm:hidden w-full border border-gray-scale-20"></span>
+              <div className="flex flex-col gap-6 md:pl-10 sm:pl-3 w-full">
                 {termsCheck.map((items) => (
                   <CButton
                     onClick={() => termsClickHandler(items.id)}
@@ -100,7 +100,7 @@ const Terms = () => {
             </div>
             <CButton
               onClick={termsOnClickHandler}
-              className={`w-full rounded-2xl px-5 py-4 cursor-pointer ${isAllChecked ? 'bg-primary-50 text-white' : 'bg-gray-scale-40 text-gray-scale-0'}`}
+              className={`md:w-full rounded-2xl sm:px-40 md:px-5 py-4 cursor-pointer ${isAllChecked ? 'bg-primary-50 text-white' : 'bg-gray-scale-40 text-gray-scale-0'}`}
               children="동의하고 시작하기"
               disabled={!isAllChecked}
             />

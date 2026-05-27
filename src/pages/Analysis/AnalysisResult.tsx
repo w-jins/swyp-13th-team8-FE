@@ -71,8 +71,8 @@ const AnalysisResult = () => {
   } = analysisData;
 
   return (
-    <div className="flex flex-row w-full h-full overflow-hidden bg-gray-scale-5">
-      <div className="flex flex-col w-[55%] xl:w-3/5 h-full">
+    <div className="flex flex-col md:flex-row w-full h-full md:overflow-hidden bg-gray-scale-5">
+      <div className="hidden md:flex flex-col w-[55%] xl:w-3/5 h-full">
         {/* 상단 타이틀 영역 */}
         <div className="flex flex-col gap-4 px-10 pb-8">
           <CBreadcrumb
@@ -98,15 +98,42 @@ const AnalysisResult = () => {
       </div>
 
       {/* PDF 요약 (우측 패널) */}
-      <div className="flex flex-col w-[45%] xl:w-2/5 h-full bg-primary-0 rounded-tl-[40px] shadow-PDF border-l border-gray-scale-20 z-10 overflow-y-auto p-6 gap-7">
+      <div className="flex flex-col w-full md:w-[45%] xl:w-2/5 h-full bg-primary-0 md:rounded-tl-[40px] md:shadow-PDF md:border-l border-gray-scale-20 z-10 overflow-y-auto p-6 gap-7">
+        {/* 모바일 전용 타이틀 영역 */}
+        <div className="md:hidden flex flex-col gap-2 order-1 ">
+          <p className="text-title-h2 font-bold text-gray-scale-90">약관 분석 결과</p>
+        </div>
+
+        {/* 모바일 전용 업로드 파일 표시 박스*/}
+        <div className="md:hidden flex flex-col gap-2 mb-2 order-3">
+          <p className="text-title-h4 text-gray-scale-80">업로드 파일</p>
+          <div className="flex items-center gap-2 border border-gray-scale-20 rounded-xl px-4 py-3 bg-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 text-gray-scale-40"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+              />
+            </svg>
+            <p className="text-body-s-r text-gray-scale-60 truncate">{originalFileName}</p>
+          </div>
+        </div>
+
         {/* 카테고리 버튼 */}
-        <div className="flex flex-wrap gap-2 ">
+        <div className="shrink-0 flex flex-nowrap md:flex-wrap gap-2 pb-1 -mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto no-scrollbar order-4 md:order-1">
           {CATEGORIES.map((category) => (
             <CButton
               key={category}
               onClick={() => scrollToSection(category)}
               // 💡 index === 0 이 아니라 선택된 activeCategory와 비교하도록 수정
-              className={`px-4 py-2 rounded-full text-body-m-m transition-colors cursor-pointer ${
+              className={`shrink-0 px-4 py-2 rounded-full text-body-m-m transition-colors cursor-pointer ${
                 activeCategory === category ? 'bg-primary-50 text-white' : 'bg-gray-scale-10 text-gray-scale-50 hover:bg-gray-scale-20'
               }`}
             >
@@ -115,7 +142,7 @@ const AnalysisResult = () => {
           ))}
         </div>
 
-        <div className="bg-gray-scale-5 text-gray-scale-50 rounded-3xl">
+        <div className="bg-gray-scale-5 text-gray-scale-50 rounded-3xl order-2 md:order-2">
           <p className="px-6 py-5 text-body-m-r">
             본 분석 결과는 AI가 약관 내용을 기반으로 요약·해석한 정보입니다.
             <br />
@@ -125,7 +152,7 @@ const AnalysisResult = () => {
         </div>
 
         {/* 요약 카드 목록 */}
-        <div className="flex flex-col gap-15">
+        <div className="flex flex-col gap-5 md:gap-15 order-5 md:order-3">
           {/* 1. AI 핵심요약 */}
           <div className="flex flex-col gap-7 border border-gray-scale-20 bg-gray-scale-0 rounded-2xl px-6 py-7">
             <div
@@ -143,10 +170,10 @@ const AnalysisResult = () => {
                 {/* 💡 실제 상품명 및 태그 적용 */}
                 <p className="text-title-h3">{productName}</p>
                 <div className="flex gap-1.5 flex-wrap">
-                  <CLabel className="md:px-3 md:py-1 flex text-[12px]" children={contractType} variant="contract" />
-                  <CLabel className="md:px-3 md:py-1 flex text-[12px]" children={generation} variant="generation" />
-                  <CLabel className="md:px-3 md:py-1 flex text-[12px]" children={coverageStructure} variant="coverage" />
-                  <CLabel className="md:px-3 md:py-1 flex text-[12px]" children={cautionPoint} variant="caution" />
+                  <CLabel className="sm:py-1 sm:px-2 flex text-[12px]" children={contractType} variant="contract" />
+                  <CLabel className="sm:py-1 sm:px-2 flex text-[12px]" children={generation} variant="generation" />
+                  <CLabel className="sm:py-1 sm:px-2 flex text-[12px]" children={coverageStructure} variant="coverage" />
+                  <CLabel className="sm:py-1 sm:px-2 flex text-[12px]" children={cautionPoint} variant="caution" />
                 </div>
               </div>
               {/* 💡 핵심 요약 리스트 렌더링 */}

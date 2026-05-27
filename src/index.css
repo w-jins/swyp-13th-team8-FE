@@ -46,6 +46,7 @@
   --color-red-scale-40: #f53933;
 
   /* Figma 가이드 기준 브레이크포인트 설정 */
+  --breakpoint-sm: 390px;
   --breakpoint-md: 768px; /* Tablet */
   --breakpoint-xl: 1440px; /* Desktop */
   --breakpoint-2xl: 1920px; /* Large Desktop */
@@ -56,6 +57,20 @@
   --shadow-modal: 0 0 10px 0 rgba(0, 0, 0, 0.25);
   --shadow-PDF: -5px 0 15px 0 rgba(0, 0, 0, 0.1);
   --shadow-select: 0 0 10px 0 rgba(91, 143, 255, 0.25);
+
+  /* animation */
+  --animate-slide-up: slide-up 0.4s ease-out forwards;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 /* 🎨 디자인 시스템: 타이포그래피 (Figma Text Styles) */
@@ -148,5 +163,13 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: -0.02em;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 }

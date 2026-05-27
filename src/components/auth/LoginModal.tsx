@@ -40,7 +40,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
   };
 
   return (
-    <CModal cancel={true} onClose={onClose}>
+    <CModal cancel={true} onClose={onClose} position="responsive">
       <div className="flex flex-col gap-4 items-center">
         <div className="py-5">
           <CImg className="w-30 h-30" src={welcome} alt="로고이미지" />

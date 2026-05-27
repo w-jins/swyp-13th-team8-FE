@@ -14,7 +14,7 @@ const CBreadcrumb: React.FC<BreadcrumbProps> = ({ items = [] }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center gap-1 mt-4">
+    <div className="sm:hidden md:flex items-center gap-1 mt-4">
       <div className="flex items-center gap-1 cursor-pointer" onClick={() => navigate('/home')}>
         <img src={breadcrumbHome} alt="홈" className="w-4 h-4" />
         <span className="text-gray-scale-60 text-body-s-r underline">홈</span>
