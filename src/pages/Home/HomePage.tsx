@@ -15,14 +15,14 @@ const Home = () => {
     resetStore(); // 전역 상태 초기화!
   }, [resetStore]);
   return (
-    <div className="flex flex-1 max-w-335 h-full flex-col gap-5">
+    <div className="flex flex-1 max-w-335 h-full flex-col gap-5 py-5 md:py-0">
       {/* 상단 섹션 */}
-      <div className="flex flex-row w-full gap-5">
+      <div className="flex flex-col md:flex-row w-full gap-5">
         <HeroSection />
         <InfoCards />
       </div>
       {/* 하단 섹션 */}
-      <div className="flex flex-row w-full gap-5">
+      <div className="flex flex-col md:flex-row w-full gap-5 flex-1">
         <GuideBanner />
         <CalculatorForm />
       </div>

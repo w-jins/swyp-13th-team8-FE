@@ -24,7 +24,6 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
   const token = useAuthStore((state) => state.accessToken);
 
   useEffect(() => {
-    // 홈 화면에서 다른 페이지로 넘어갈 때(언마운트 될 때) 딱 한 번 실행됩니다!
     return () => {
       resetStore(); // 전역 상태 초기화!
     };
@@ -40,35 +39,28 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
     onDrop,
     accept: { 'application/pdf': ['.pdf'] },
     maxFiles: 1,
-    noClick: true, // 💡 중요: 박스 전체 클릭 시 탐색기가 열리는 것을 막음
+    noClick: true,
     noKeyboard: true,
   });
+
   const analysisStartHandler = () => {
-    openModal('LOADING'); // 모달 오픈
+    openModal('LOADING');
 
     sseConnectAPI(
-      // 💡 1. SSE 파이프 연결이 성공했을 때 실행되는 함수
       async (id) => {
         try {
-          // 파이프가 뚫렸으니 백엔드에 "분석 시작" 명령(POST) 전송
           await analysisAI(token, uploadedFile, id, insuranceInfo.id);
         } catch (e) {
           console.error('분석 요청 에러:', e);
-          closeModal(); // 에러 나면 로딩 끄기
+          closeModal();
           alert('분석 요청에 실패했습니다.');
         }
       },
-
-      token, // 두 번째 파라미터: 토큰
-
-      // 💡 2. [추가됨] 서버에서 SSE를 통해 이벤트가 날아올 때 실행할 함수
+      token,
       (eventData) => {
         if (eventData.event === 'analysisComplete') {
           try {
-            // 넘어온 문자열 데이터를 JSON 객체로 파싱
             const parsedData = JSON.parse(eventData.data);
-
-            // 상태 업데이트 및 로딩 모달 끄기
             setAnalysisData(parsedData);
             closeModal();
             navigate('/analysis/result');
@@ -84,75 +76,82 @@ const PdfUploader = ({ name }: PdfUploaderProps) => {
   return (
     <div
       {...getRootProps()}
-      className={`flex flex-col h-78.75 rounded-3xl items-center justify-center gap-7 transition-colors duration-200 border
-        ${
-          isDragActive
-            ? 'bg-primary-20 border-primary-50' // 드래그 중일 때 색상 진해짐
-            : 'bg-primary-10 border-primary-20' // 평상시 색상
-        }`}
+      // 💡 모바일에서는 h-auto와 py-10, 가로 패딩 px-6을 주어 내부 요소들이 세로로 배치되어도 터지지 않게 만듭니다.
+      className={`flex flex-col pt-40 h-full md:py-0 md:h-78.75 md:rounded-3xl items-center sm:justify-between md:justify-center gap-6 md:gap-7 transition-colors duration-200 md:border
+        ${isDragActive ? 'bg-primary-20 border-primary-50' : 'md:bg-primary-10 md:border-primary-20'}`}
     >
       <input {...getInputProps()} />
 
-      {/* 파일이 업로드되었을 때 보여줄 UI */}
+      {/* 1. 파일이 업로드되었을 때 보여줄 UI */}
       {uploadedFile ? (
-        <div className="flex flex-col items-center gap-5">
-          <CImg className="w-20 h-20" src={pdf} alt="PDF_아이콘" />
-          <div className="flex flex-col items-center gap-1 text-center">
-            <p className="text-title-h3 text-gray-scale-80">{uploadedFile.name}</p>
-            <p className="text-body-m-r text-gray-scale-50">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+        <div className="flex flex-col items-center gap-5 w-full">
+          <CImg className="w-24 h-24 md:w-20 md:h-20" src={pdf} alt="PDF_아이콘" />
+          <div className="flex flex-col items-center gap-1 text-center px-4">
+            <p className="text-body-l-sb md:text-title-h3 text-gray-scale-80 truncate max-w-xs md:max-w-none">{uploadedFile.name}</p>
+            <p className="text-body-s-r md:text-body-m-r text-gray-scale-50">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
           </div>
-          <div className="flex gap-3 mt-2">
-            <CButton onClick={() => setUploadedFile(null)} className="px-5 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
-              <p>삭제</p>
+          {/* 모바일에서는 버튼들이 가로로 균등하게 너비를 나눠 가집니다 (flex-1) */}
+          <div className="flex gap-3 mt-2 w-full md:w-auto px-4 md:px-0 justify-center">
+            <CButton onClick={() => setUploadedFile(null)} className="flex-1 md:flex-none px-6 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
+              <p className="text-body-m-b">삭제</p>
             </CButton>
-            <CButton onClick={analysisStartHandler} className="px-5 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
-              분석 시작하기
+            <CButton onClick={analysisStartHandler} className="flex-1 md:flex-none px-6 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
+              <p className="text-body-m-b">분석 시작하기</p>
             </CButton>
           </div>
         </div>
       ) : insuranceInfo.id ? (
-        <div className="flex flex-col items-center gap-5">
-          <CImg className="w-20 h-20" src={insadd} alt="보험 아이콘" />
-          <div className="flex flex-col items-center gap-1 text-center">
-            <p className="text-title-h4 text-gray-scale-60">{insuranceInfo.companyName}</p>
-            <p className="text-title-h3 text-gray-scale-80">{insuranceInfo.productName}</p>
+        /* 2. 내 보험 불러오기로 보험이 선택되었을 때의 UI */
+        <div className="flex flex-col items-center gap-5 w-full">
+          <CImg className="w-24 h-24 md:w-20 md:h-20" src={insadd} alt="보험 아이콘" />
+          <div className="flex flex-col items-center gap-1 text-center px-4">
+            <p className="text-body-m-r md:text-title-h4 text-gray-scale-60">{insuranceInfo.companyName}</p>
+            <p className="text-body-l-sb md:text-title-h3 text-gray-scale-80">{insuranceInfo.productName}</p>
           </div>
-          <div className="flex gap-3 mt-2">
-            <CButton onClick={() => resetStore()} className="px-5 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
-              취소
+          <div className="flex gap-3 mt-2 w-full md:w-auto px-4 md:px-0 justify-center">
+            <CButton onClick={() => resetStore()} className="flex-1 md:flex-none px-6 py-4 rounded-2xl bg-gray-scale-20 text-gray-scale-70">
+              <p className="text-body-m-b">취소</p>
             </CButton>
-            <CButton onClick={analysisStartHandler} className="px-5 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
-              분석 시작하기
+            <CButton onClick={analysisStartHandler} className="flex-1 md:flex-none px-6 py-4 rounded-2xl bg-primary-50 text-white cursor-pointer">
+              <p className="text-body-m-b">분석 시작하기</p>
             </CButton>
           </div>
         </div>
       ) : (
-        /* 파일 업로드 전 초기 UI (작성하신 코드 그대로 적용) */
+        /* 3. 파일 업로드 전 초기 대기 UI */
         <>
-          <div className="flex flex-col gap-5 items-center pointer-events-none">
-            <CImg className="w-20 h-20" src={pdf} alt="PDF_아이콘" />
+          <div className="flex flex-col gap-4 md:gap-5 items-center pointer-events-none px-4 text-center">
+            <CImg className="w-24 h-24 md:w-20 md:h-20" src={pdf} alt="PDF_아이콘" />
             <div className="flex flex-col items-center gap-1">
               <p className="text-title-h3 text-gray-scale-80">약관 파일을 업로드하세요.</p>
-              <p className="text-body-m-r text-gray-scale-50">내 PC에서 첨부하거나 문서를 드래그하여 넣어주세요.</p>
+              <p className="text-body-s-r md:text-body-m-r text-gray-scale-50">내 PC에서 첨부하거나 문서를 드래그하여 넣어주세요.</p>
             </div>
           </div>
 
-          <div className="flex flex-row gap-3">
-            {/* 💡 onClick={open}을 통해 이 버튼을 누를 때만 탐색기가 열림 */}
-            <CButton onClick={open} className="flex items-center gap-2 px-5 py-4 bg-primary-0 rounded-2xl cursor-pointer">
+          <div className="flex flex-col-reverse md:flex-row gap-3 w-full sm:px-0 md:px-0 md:w-auto">
+            {/* 컴퓨터/기기에서 업로드 버튼 */}
+            <CButton
+              onClick={open}
+              className="flex items-center justify-center gap-2 px-5 py-4 bg-primary-0 rounded-2xl cursor-pointer w-full md:w-auto border border-gray-scale-20 md:border-none"
+            >
               <CImg className="w-5 h-5" src={upload} alt="업로드" />
-              <p className="text-gray-scale-60">컴퓨터에서 업로드</p>
+              <p className="text-gray-scale-60 text-body-m-b md:text-body-m-m">
+                {/* 💡 데스크탑일 땐 "컴퓨터에서", 모바일일 땐 "기기에서" 문구가 부드럽게 분기 처리됩니다. */}
+                <span className="hidden md:inline">컴퓨터에서 업로드</span>
+                <span className="inline md:hidden">기기에서 업로드하기</span>
+              </p>
             </CButton>
 
+            {/* 내 보험에서 불러오기 버튼 */}
             <CButton
               disabled={!isLogin}
               onClick={() => openModal('INSURANCE')}
-              className={`flex items-center gap-2 px-5 py-4 text-white rounded-2xl ${
+              className={`flex items-center justify-center gap-2 px-5 py-4 text-white rounded-2xl w-full md:w-auto ${
                 name ? 'bg-primary-50 cursor-pointer' : 'bg-gray-scale-40 cursor-not-allowed'
               }`}
             >
               <CImg className="w-5 h-5" src={insurance} alt="불러오기" />
-              <p>내 보험에서 불러오기</p>
+              <p className="text-body-m-b">내 보험에서 불러오기</p>
             </CButton>
           </div>
         </>

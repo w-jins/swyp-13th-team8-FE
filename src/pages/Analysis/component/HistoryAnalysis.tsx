@@ -43,8 +43,7 @@ const HistoryAnalysis = () => {
   return (
     <div className="flex flex-col w-full h-full gap-5">
       {/* 리스트 컨테이너 (스크롤 영역) */}
-      <div className="flex flex-1 flex-col gap-3 rounded-[24px] bg-white p-6 shadow-sm border border-gray-100 min-h-[400px] max-h-[600px] overflow-y-auto">
-        {' '}
+      <div className="flex flex-1 flex-col gap-3 rounded-[24px] md:bg-white pt-3 md:p-6 md:shadow-sm md:border md:border-gray-100 min-h-[400px] max-h-[600px] overflow-y-auto">
         {historyAnalysis.length === 0 ? (
           <div className="flex flex-1 items-center justify-center text-gray-400">분석 히스토리가 없습니다.</div>
         ) : (

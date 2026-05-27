@@ -48,15 +48,11 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
     if (location.pathname === '/calculator') navigate('/calculator/medical-info');
   };
   return (
-    <CModal cancel={true} onClose={onClose}>
-      {/* 💡 2. CModal 안쪽 콘텐츠 영역 (가로 길이 고정) */}
-      <div className="flex w-[600px] flex-col gap-6">
-        {/* 타이틀: CModal의 X버튼 높이와 자연스럽게 맞추기 위해 음수 마진(-mt-8) 사용 */}
+    <CModal cancel={true} onClose={onClose} position="responsive">
+      <div className="flex md:w-[600px] max-h-[80vh] flex-col gap-6">
         <p className="text-title-h2 font-bold text-gray-scale-90">불러올 보험을 선택해주세요.</p>
 
-        {/* 3. 보험 리스트 및 추가 영역 (Grid 레이아웃) */}
-        <div className="mt-2 grid grid-cols-2 gap-4">
-          {/* 카드 1: 내 보험 불러오기 */}
+        <div className="mt-2 grid sm:grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto no-scrollbar flex-1">
           {myInsurance?.insurances.map((items) => (
             <InsuranceModalCard
               key={items.userInsuranceId}
@@ -66,7 +62,6 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
             />
           ))}
 
-          {/* 카드 2: 새 보험 등록하기 */}
           <div
             className="flex min-h-[160px] cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl bg-gray-scale-10 transition-colors hover:bg-gray-scale-20"
             onClick={() => {
@@ -83,7 +78,6 @@ const InsuranceModal = ({ onClose }: InsuranceModalProps) => {
           </div>
         </div>
 
-        {/* 4. 하단 선택 완료 버튼 */}
         <CButton
           onClick={onSubmit}
           disabled={!selectedInsurance}
