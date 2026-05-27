@@ -51,7 +51,7 @@ const InsuranceList = () => {
         <button
           disabled={!isLogin}
           onClick={() => navigate('/mypage/insurance/add')}
-          className="flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
+          className="h-[200px] flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
         >
           <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
             <div className="absolute inset-0 bg-primary-20 rounded-full opacity-40 group-hover:scale-125 transition-transform duration-300"></div>

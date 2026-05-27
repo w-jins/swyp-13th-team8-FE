@@ -62,8 +62,8 @@ const MypageHistoryCalculator = () => {
           <div className="w-24 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">계산일</div>
           <div className="w-40 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">계산 항목</div>
           <div className="w-36 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">요양급여수가코드</div>
-          <div className="flex-1 pl-6 text-left text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">대상 보험</div>
-          <div className="text-center text-body-m-m text-gray-scale-50 w-44">예상 환급금</div>
+          <div className="flex-1 pl-55 text-left text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">대상 보험</div>
+          <div className="text-center pr-5 text-body-m-m text-gray-scale-50 w-44">예상 환급금</div>
 
           {/* 우측 상단 정렬 드롭다운 */}
           <div className="flex justify-end w-24">
