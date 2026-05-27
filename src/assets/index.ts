@@ -33,7 +33,13 @@ export { default as upload } from './icons/upload20.svg';
 export { default as warning } from './icons/message-warn16.svg';
 export { default as historyEmpty } from './icons/history_empty.svg';
 export { default as breadcrumbHome } from './icons/breadcrumb_home16.svg';
+
+// 마이페이지
 export { default as mypagePlusBtn } from './icons/mypage_inslist_btn_plus_default.svg';
+export { default as mypageLogout } from './icons/mypage_setting_user_logout24.svg';
+export { default as mypageHistory } from './icons/mypage_profile_history24.svg';
+export { default as mypageSetting } from './icons/mypage_profile_setting24.svg';
+export { default as mypageUser } from './icons/mypage_profile_user24.svg';
 
 // 로고
 export { default as logo } from './icons/logo.svg';
