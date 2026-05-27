@@ -5,6 +5,18 @@ import Calculator from './pages/Calculator/CalculatorPage';
 import Analysis from './pages/Analysis/AnalysisPage';
 import MyPage from './pages/My/MyPage';
 import LandingPage from './pages/Landing/LandingPage';
+import Terms from './pages/login/Terms';
+import AnalysisResult from './pages/Analysis/AnalysisResult';
+import Setting from './pages/My/components/profiles/Setting';
+import AddInsurancePage from './pages/My/components/addInsurance/AddInsurancePage';
+import InsurancePage from './pages/My/components/insurance/InsurancePage';
+import MedicalInfo from './pages/Calculator/components/MedicalInfo';
+import RefundResult from './pages/Calculator/components/RefundResult';
+import SavePage from './pages/My/components/profiles/savedHistory/SavePage';
+import Guide from './pages/Guide/Guide';
+import Question from './pages/Guide/Question';
+import FeatureGuidePage from './pages/Guide/FeatureGuidePage';
+import EdiGuidePage from './pages/Guide/EdiGuidePage';
 /*
   라우터 주소 체계 설정하는 파일
 */
@@ -29,12 +41,23 @@ const router = createBrowserRouter([
     ],
   },
   {
+    // 약관 페이지
+    path: '/terms',
+    element: <AppLayout />,
+    children: [
+      // 약관 페이지
+      { index: true, element: <Terms /> },
+    ],
+  },
+  {
     // 환급금 계산기 페이지
     path: '/calculator',
     element: <AppLayout />,
     children: [
       // 환급금 계산기 페이지
       { index: true, element: <Calculator /> },
+      { path: 'medical-info', element: <MedicalInfo /> },
+      { path: 'refund-result', element: <RefundResult /> },
     ],
   },
   {
@@ -44,6 +67,8 @@ const router = createBrowserRouter([
     children: [
       // 약관 분석 페이지 컴포넌트
       { index: true, element: <Analysis /> },
+      { path: 'result', element: <AnalysisResult /> },
+      { path: 'result/:id', element: <AnalysisResult /> },
     ],
   },
   {
@@ -53,6 +78,20 @@ const router = createBrowserRouter([
     children: [
       // 마이페이지 컴포넌트
       { index: true, element: <MyPage /> },
+      { path: 'setting', element: <Setting /> },
+      { path: 'insurance', element: <InsurancePage /> },
+      { path: 'insurance/add', element: <AddInsurancePage /> },
+      { path: 'saved-history', element: <SavePage /> },
+    ],
+  },
+  {
+    path: '/guide',
+    element: <AppLayout />,
+    children: [
+      { index: true, element: <Guide /> },
+      { path: 'question', element: <Question /> },
+      { path: 'feature', element: <FeatureGuidePage /> },
+      { path: 'edi', element: <EdiGuidePage /> },
     ],
   },
 ]);

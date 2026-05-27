@@ -11,7 +11,7 @@ const CImg = ({ src, alt, className = '', ...props }: ImgProps) => {
   const handleError = () => {
     setIsError(true);
   };
-  const baseStyle = 'max-w-full h-auto object-cover';
+  const baseStyle = 'max-w-full object-cover';
   return <img className={`${baseStyle} ${className}`} src={isError ? '' : src} alt={alt} {...props} loading="lazy" onError={handleError} />;
 };
 

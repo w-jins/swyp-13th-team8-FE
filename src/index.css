@@ -6,6 +6,10 @@
   --color-system-danger: #f53933;
   --color-system-warning: #f9d60e;
   --color-system-success: #008a1e;
+  --color-system-success2: #4dd36a;
+  --color-System-caution: #f9d60e;
+  --color-System-warning: #fff1a2;
+  --color-System-secondary: #cfefff;
 
   /* Primary Colors */
   --color-primary-0: #ffffff;
@@ -35,14 +39,42 @@
   --color-gray-scale-90: #131518;
   --color-gray-scale-100: #000000;
 
+  /* System red Colors */
+  --color-red-scale-10: #ffe5e5;
+  --color-red-scale-20: #ff9f9f;
+  --color-red-scale-30: #ea7373;
+  --color-red-scale-40: #f53933;
+
   /* Figma 가이드 기준 브레이크포인트 설정 */
+  --breakpoint-sm: 390px;
   --breakpoint-md: 768px; /* Tablet */
   --breakpoint-xl: 1440px; /* Desktop */
   --breakpoint-2xl: 1920px; /* Large Desktop */
+
+  /* shadow */
+  --shadow-main: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  --shadow-drop-down: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  --shadow-modal: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  --shadow-PDF: -5px 0 15px 0 rgba(0, 0, 0, 0.1);
+  --shadow-select: 0 0 10px 0 rgba(91, 143, 255, 0.25);
+
+  /* animation */
+  --animate-slide-up: slide-up 0.4s ease-out forwards;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 /* 🎨 디자인 시스템: 타이포그래피 (Figma Text Styles) */
-@layer components {
+@layer utilities {
   /* Title */
   .text-title-h1 {
     font-size: 28px;
@@ -76,6 +108,12 @@
     line-height: normal;
     letter-spacing: -0.03em;
   }
+  .text-body-xl-r {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.03em;
+  }
   .text-body-l-sb {
     font-size: 16px;
     font-weight: 600;
@@ -106,6 +144,12 @@
     line-height: normal;
     letter-spacing: -0.03em;
   }
+  .text-body-s-m {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.01em;
+  }
   .text-body-s-r {
     font-size: 12px;
     font-weight: 400;
@@ -119,5 +163,13 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: -0.02em;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 }
