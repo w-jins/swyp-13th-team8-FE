@@ -35,7 +35,7 @@ const LandingPage = () => {
     <div className="flex relative overflow-auto flex-col bg-gray-scale-">
       <Header />
 
-      {/* 1. 첫 섹션 */}
+      {/* 1. 메인 섹션 */}
       <section className="relative w-full max-w-7xl h-137 mx-auto mb-180 bg-linear-to-b from-[#D9D9D9] to-[#FFFFFF] rounded-t-[40px]">
         <div>
           <CImg src={heroBg} alt="메인 히어로 배너" />
@@ -61,7 +61,7 @@ const LandingPage = () => {
 
       <CImg className="left-1/2 top-250 absolute h-53.25" src={landingLine} alt="라인" />
 
-      {/* 2. 이런 생각  */}
+      {/* 2. 문제 섹션  */}
       <section className="w-full pb-20">
         <div className="w-full max-w-7xl flex flex-col mx-auto items-center gap-20">
           <h2 className="text-title-h2 text-center">
