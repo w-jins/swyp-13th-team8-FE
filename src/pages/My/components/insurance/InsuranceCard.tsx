@@ -20,7 +20,7 @@ const InsuranceCard = ({ ins, isDeleting, onDelete, onSelect }: InsuranceCardPro
             {ins.generation}세대
           </CLabel>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-5">
           {/* 삭제 버튼 */}
           <button
             className="cursor-pointer shrink-0 text-gray-scale-30 hover:text-red-400 transition-colors disabled:opacity-40"
@@ -30,9 +30,10 @@ const InsuranceCard = ({ ins, isDeleting, onDelete, onSelect }: InsuranceCardPro
             {isDeleting ? (
               <div className="w-5 h-5 border-2 border-red-300 border-t-red-500 rounded-full animate-spin" />
             ) : (
-              <span className="text-xl">🗑</span>
+              <span className="text-xl">삭제</span>
             )}
           </button>
+
           {/* 상세보기 버튼 */}
           <button className="cursor-pointer shrink-0" onClick={() => onSelect(ins)}>
             <CImg src={right} alt="상세보기" className="w-10 h-10 opacity-30" />
@@ -40,11 +41,11 @@ const InsuranceCard = ({ ins, isDeleting, onDelete, onSelect }: InsuranceCardPro
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <CImg className="w-10 h-10" src={insuranceCompany?.src} alt="보험사" />
-        <div>
-          <p className="text-title-h3 text-gray-scale-80 leading-snug">{ins.productName}</p>
-          <p className="text-body-s-r text-gray-scale-40 mt-5">
+      <div className="flex items-center gap-7">
+        <CImg className="w-14 h-14" src={insuranceCompany?.src} alt="보험사" />
+        <div className="">
+          <p className="text-title-h2 text-gray-scale-80 leading-snug">{ins.productName}</p>
+          <p className="text-body-l-r text-gray-scale-50 mt-5">
             {ins.companyName} · {ins.joinDate}
           </p>
         </div>

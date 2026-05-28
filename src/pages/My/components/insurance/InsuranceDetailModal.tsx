@@ -4,6 +4,7 @@ import api from '../../../../api/axios';
 import type { Insurance } from '../../../../hooks/useInsurance.ts';
 import useCompanyImg from '../../../../hooks/useCompanyImg.ts';
 import CImg from '../../../../components/common/CImg.tsx';
+import CLabel from '../../../../components/common/CLabel.tsx';
 
 interface InsuranceDetail {
   userInsuranceId: number;
@@ -64,22 +65,24 @@ const InsuranceDetailModal = ({ insurance, onClose }: Props) => {
             </div>
           ) : detail ? (
             <>
-              <div className="flex gap-1 mb-4 flex-wrap">
-                {detail.contractType && (
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-gray-scale-5 text-gray-scale-50 border border-gray-scale-20">
-                    {detail.contractType}
-                  </span>
-                )}
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary-5 text-primary-50 border border-primary-20">
+              <div className="flex gap-2 mb-4 flex-wrap">
+                <CLabel variant="generation" size="sm">
                   {detail.generation}세대
-                </span>
+                </CLabel>
+                {detail.contractType && (
+                  <CLabel variant="contract" size="sm">
+                    {detail.contractType}
+                  </CLabel>
+                )}
                 {detail.coverageStructure && (
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-gray-scale-5 text-gray-scale-50 border border-gray-scale-20">
+                  <CLabel variant="coverage" size="sm">
                     {detail.coverageStructure}
-                  </span>
+                  </CLabel>
                 )}
                 {detail.cautionPoint && (
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-red-50 text-red-400 border border-red-100">{detail.cautionPoint}</span>
+                  <CLabel variant="caution" size="sm">
+                    {detail.cautionPoint}
+                  </CLabel>
                 )}
               </div>
 
@@ -101,13 +104,13 @@ const InsuranceDetailModal = ({ insurance, onClose }: Props) => {
 
               {detail.coreSummary && detail.coreSummary.length > 0 && (
                 <div className="mb-4">
-                  <p className="text-body-m-m font-bold text-gray-scale-80 mb-3">AI 핵심요약</p>
+                  <p className="text-[15px] font-bold text-primary-60 mb-3"> AI 핵심요약</p>
                   <div className="w-full rounded-xl border border-gray-scale-10 overflow-hidden">
                     <button
                       onClick={() => toggleKey('coreSummary')}
                       className="w-full flex items-center justify-between px-4 py-3 bg-gray-scale-5 hover:bg-gray-scale-10 transition-colors"
                     >
-                      <span className="text-body-m-m text-gray-scale-70">AI 핵심요약</span>
+                      <span className="text-body-m-m text-gray-scale-70">내용 펼쳐보기</span>
                       <span className="text-gray-scale-40">{openKeys.includes('coreSummary') ? '∧' : '∨'}</span>
                     </button>
                     {openKeys.includes('coreSummary') && (
