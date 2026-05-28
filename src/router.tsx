@@ -4,7 +4,6 @@ import Home from './pages/Home/HomePage';
 import Calculator from './pages/Calculator/CalculatorPage';
 import Analysis from './pages/Analysis/AnalysisPage';
 import MyPage from './pages/My/MyPage';
-import LandingPage from './pages/Landing/LandingPage';
 import Terms from './pages/login/Terms';
 import AnalysisResult from './pages/Analysis/AnalysisResult';
 import Setting from './pages/My/components/profiles/Setting';
@@ -17,6 +16,7 @@ import Guide from './pages/Guide/Guide';
 import Question from './pages/Guide/Question';
 import FeatureGuidePage from './pages/Guide/FeatureGuidePage';
 import EdiGuidePage from './pages/Guide/EdiGuidePage';
+import EntryRoute from './pages/Landing/EntryRoute';
 /*
   라우터 주소 체계 설정하는 파일
 */
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   {
     // 랜딩 페이지
     path: '/',
-    element: <LandingPage />,
+    element: <EntryRoute />,
   },
   {
     // 로그인 페이지
