@@ -31,19 +31,36 @@ const InsuranceList = () => {
         {firstInsurance && (
           <div className="w-[450px] h-[250px] bg-primary-0 rounded-[24px] border border-gray-scale-0 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start">
-              <CImg className="w-10 h-10" src={insuranceCompany?.src} alt="보험사" />
+              <CImg className="w-14 h-14" src={insuranceCompany?.src} alt="보험사" />
               <button className="p-2 -m-2 rounded-full transition-colors cursor-pointer" onClick={() => setSelectedInsurance(firstInsurance)}>
                 <CImg src={right} alt="상세보기" className="w-8 h-8 opacity-30" />
               </button>
             </div>
             <div className="mt-4">
-              <h3 className="text-title-h3 leading-tight">{firstInsurance.productName}</h3>
+              <h3 className="text-title-h3 leading-tight ">{firstInsurance.productName}</h3>
               <p className="py-3 mb-2 text-body-m-r text-gray-scale-50">
                 {firstInsurance.companyName} · {firstInsurance.joinDate}
               </p>
-              <CLabel variant="generation" size="sm">
-                {firstInsurance.generation}세대
-              </CLabel>
+              <div className="flex gap-2 flex-wrap">
+                <CLabel variant="generation" size="sm">
+                  {firstInsurance.generation}세대
+                </CLabel>
+                {firstInsurance.contractType && (
+                  <CLabel variant="contract" size="sm">
+                    {firstInsurance.contractType}
+                  </CLabel>
+                )}
+                {firstInsurance.coverageStructure && (
+                  <CLabel variant="coverage" size="sm">
+                    {firstInsurance.coverageStructure}
+                  </CLabel>
+                )}
+                {firstInsurance.cautionPoint && (
+                  <CLabel variant="caution" size="sm">
+                    {firstInsurance.cautionPoint}
+                  </CLabel>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -51,7 +68,7 @@ const InsuranceList = () => {
         <button
           disabled={!isLogin}
           onClick={() => navigate('/mypage/insurance/add')}
-          className="h-[200px] flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
+          className="h-[250px] flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
         >
           <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
             <div className="absolute inset-0 bg-primary-20 rounded-full opacity-40 group-hover:scale-125 transition-transform duration-300"></div>
