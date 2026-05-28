@@ -65,10 +65,9 @@ const MedicalInfo = () => {
       <CBreadcrumb items={[{ label: '환급금 계산기' }]} />
 
       <CContents title="환급금 계산기">
-        <div className="max-w-2xl mx-auto mb-16">
+        <div className="px-90 mb-15 mt-5 ">
           <CStepBar steps={steps} currentStep={currentStep} />
         </div>
-
         <div className="max-w-3xl mx-auto">
           <h2 className="text-[22px] font-bold text-center mb-12">진료 정보를 입력해 주세요.</h2>
 
@@ -228,7 +227,7 @@ const MedicalInfo = () => {
             <CButton
               variant="primary"
               size="lg"
-              className={`w-full py-5 rounded-2xl font-bold transition-all duration-300 opacity-100`}
+              className={`w-full py-5 mb-15 rounded-2xl font-bold transition-all duration-300 opacity-100`}
               // 4. 클릭 이벤트 연결
               onClick={handleCalculate}
             >
