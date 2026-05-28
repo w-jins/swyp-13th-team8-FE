@@ -228,7 +228,7 @@ const MedicalInfo = () => {
             <CButton
               variant="primary"
               size="lg"
-              className={`w-full py-5 rounded-2xl font-bold transition-all duration-300 opacity-100`}
+              className={`w-full py-5 mb-15 rounded-2xl font-bold transition-all duration-300 opacity-100`}
               // 4. 클릭 이벤트 연결
               onClick={handleCalculate}
             >

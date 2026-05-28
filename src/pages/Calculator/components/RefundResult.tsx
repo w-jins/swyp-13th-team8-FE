@@ -7,6 +7,8 @@ import { useCalcStore } from '../../../store/useCalcStore';
 import { calculate, type calculateProps } from '../../../api/calculator';
 import type { CalculatorResponse } from '../../../type/responseType';
 import { useModalStore } from '../../../store/useModalStore';
+import Calculator from '../CalculatorPage';
+import { refund } from '../../../assets';
 
 const RefundResult = () => {
   const navigate = useNavigate();
@@ -71,8 +73,9 @@ const RefundResult = () => {
 
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-[24px] font-bold mb-4">환급금 계산이 완료되었습니다!</h2>
-            <div className="w-16 h-16 bg-gray-200 mx-auto mb-10 rounded-lg flex items-center justify-center text-2xl">✨</div>
-
+            <div className="flex items-center justify-center w-full h-full">
+              <img src={refund} alt="계산기" className="w-50 h-50 object-contain" />
+            </div>
             <div className="flex items-center justify-start gap-2 mb-4">
               <span className="font-bold text-lg text-gray-800">환급금 계산 결과</span>
               <span className="bg-green-100 text-green-600 text-xs px-2 py-1 rounded font-bold">청구 권장 가능</span>
@@ -162,12 +165,12 @@ const RefundResult = () => {
             {/* --- 메인 결과 (차트 및 상세 계산) --- */}
             <div className="flex items-center justify-between gap-10 mb-16 px-4">
               <div className="relative flex items-center justify-center w-64 h-64">
-                {/* 🎯 상단 검은색 배지 (스크린샷처럼 원 테두리에 걸치게 -translate-y-1/2 적용) */}
+                {/*  상단 검은색 배지 (스크린샷처럼 원 테두리에 걸치게 -translate-y-1/2 적용) */}
                 <div className="absolute top-0 z-20 px-4 py-1.5 text-body-s-m font-bold text-white bg-gray-scale-100 rounded-full -translate-y-1/2 shadow-md">
                   환급 대상 금액 {percentage}%
                 </div>
 
-                {/* ⚙️ SVG 애니메이션 영역 */}
+                {/*  SVG 애니메이션 영역 */}
                 <svg className="absolute inset-0 w-full h-full">
                   {/* 1) 옅은 파란색 배경 원 (전체) */}
                   <circle
@@ -179,7 +182,7 @@ const RefundResult = () => {
                     fill="transparent"
                   />
 
-                  {/* 2) 🔵 왼쪽으로 차오르는 원 (시작점: 6시) */}
+                  {/* 2)  왼쪽으로 차오르는 원 (시작점: 6시) */}
                   <circle
                     cx="128"
                     cy="128"
@@ -199,7 +202,7 @@ const RefundResult = () => {
                     opacity={percentage > 0 ? 1 : 0}
                   />
 
-                  {/* 3) 🔵 오른쪽으로 차오르는 원 (시작점: 6시, 좌우 반전) */}
+                  {/* 3)  오른쪽으로 차오르는 원 (시작점: 6시, 좌우 반전) */}
                   <circle
                     cx="128"
                     cy="128"
@@ -271,7 +274,7 @@ const RefundResult = () => {
             </div>
 
             {/* 하단 액션 버튼 */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-15">
               <CButton
                 variant="secondary"
                 className="flex-1 py-4 border-gray-200 text-gray-600 font-bold"
