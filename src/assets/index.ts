@@ -100,3 +100,22 @@ export { default as hd } from './images/hd_logo.png';
 export { default as kb } from './images/kb_logo.png';
 export { default as meritz } from './images/meritz_logo.png';
 export { default as samsung } from './images/samsung_logo.png';
+
+// 랜딩페이지
+export { default as heroBg } from './images/hero-bg.png';
+export { default as heroMockup } from './images/hero-mockup.png';
+export { default as landingGuide } from './images/landing-fitty-guide.png';
+export { default as landingProfile_1 } from './images/landing-fitty-profile-bubble1.png';
+export { default as landingProfile_2 } from './images/landing-fitty-profile-bubble2.png';
+export { default as landingProfile_3 } from './images/landing-fitty-profile-bubble3.png';
+export { default as landingProfile } from './images/landing-fitty-profile.png';
+export { default as landingSolution } from './images/landing-fitty-solution.png';
+export { default as landingFunction_1 } from './images/landing-function1.png';
+export { default as landingFunction_2 } from './images/landing-function2.png';
+export { default as landingFunction_3 } from './images/landing-function3.png';
+export { default as landingLine } from './images/landing-line.png';
+export { default as landingLogoType } from './icons/landing-logotype.svg';
+export { default as landingOutro } from './icons/landing-outro-check.svg';
+export { default as landingProblem_1 } from './images/landing-problem1.png';
+export { default as landingProblem_2 } from './images/landing-problem2.png';
+export { default as landingProblem_3 } from './images/landing-problem3.png';

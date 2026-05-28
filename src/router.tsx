@@ -16,6 +16,7 @@ import Guide from './pages/Guide/Guide';
 import Question from './pages/Guide/Question';
 import FeatureGuidePage from './pages/Guide/FeatureGuidePage';
 import EdiGuidePage from './pages/Guide/EdiGuidePage';
+import EntryRoute from './pages/Landing/EntryRoute';
 /*
   라우터 주소 체계 설정하는 파일
 */
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
   {
     // 랜딩 페이지
     path: '/',
-    element: <></>,
+    element: <EntryRoute />,
   },
   {
     // 로그인 페이지
