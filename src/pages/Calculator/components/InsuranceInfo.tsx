@@ -93,7 +93,7 @@ const InsuranceInfo = () => {
               <div className="flex items-center justify-center h-[200px]">
                 <div className="w-8 h-8 border-[3px] border-primary-10 border-t-primary-50 rounded-full animate-spin" />
               </div>
-            ) : items.length === 0 ? ( // 배열 이름은 실제 상태 이름에 맞게 수정하세요!
+            ) : items.length === 0 ? (
               <div className="flex items-center justify-center flex-1 py-20 text-body-m-r text-gray-scale-50">계산 히스토리가 없습니다.</div>
             ) : (
               items.map((item) => (
