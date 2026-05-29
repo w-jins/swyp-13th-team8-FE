@@ -93,7 +93,7 @@ const MypageHistoryCalculator = () => {
   return (
     <div className="flex flex-col w-full h-full pt-4">
       {/* ── 모바일 카드 뷰 (sm 미만) ── */}
-      <div className="flex flex-col gap-3 sm:hidden px-4">
+      <div className="flex flex-col gap-3 md:hidden px-4">
         {items.length === 0
           ? emptyState
           : items.map((item) => (
@@ -151,11 +151,10 @@ const MypageHistoryCalculator = () => {
                 </div>
               </div>
             ))}
-        <Pagination />
       </div>
 
       {/* ── 데스크탑 테이블 뷰 (sm 이상) ── */}
-      <div className="hidden sm:flex flex-col flex-1 p-6 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
+      <div className="hidden md:flex flex-col flex-1 p-6 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
         {/* 테이블 헤더 */}
         <div className="flex items-center px-5 pb-4 mb-4 border-b border-gray-scale-10">
           <div className="w-12 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">저장</div>
@@ -237,7 +236,7 @@ const MypageHistoryCalculator = () => {
               ))}
         </div>
       </div>
-      <div className="hidden sm:block">
+      <div className="block">
         <Pagination />
       </div>
     </div>

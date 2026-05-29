@@ -13,9 +13,9 @@ const History = () => {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-5 mt-13">
+      <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-5 mt-13">
         <p className="text-title-h3 shrink-0">히스토리</p>
-        <p className="text-gray-scale-50 text-body-s-r sm:mt-2">최대 n개까지 기록되며, 초과할 경우 오래된 순부터 삭제됩니다.</p>
+        <p className="hidden md:block text-gray-scale-50 text-body-s-r md:mt-2">최대 n개까지 기록되며, 초과할 경우 오래된 순부터 삭제됩니다.</p>
       </div>
 
       <div className="w-fit px-1 py-1 mt-7 rounded-full bg-gray-scale-20">

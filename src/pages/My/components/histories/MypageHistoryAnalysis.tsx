@@ -58,7 +58,7 @@ const MypageHistoryAnalysis = () => {
       {/* ════════════════════════════════════════
           웹(md+): 기존 테이블 레이아웃
           ════════════════════════════════════════ */}
-      <div className="hidden md:flex flex-col flex-1 p-6 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
+      <div className="hidden md:flex flex-col flex-1 p-6 md:bg-gray-scale-0 md:border md:border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
         {/* 테이블 헤더 */}
         <div className="flex items-center px-5 pb-4 mb-4 border-b border-gray-scale-10">
           <div className="w-12 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">저장</div>
@@ -89,16 +89,9 @@ const MypageHistoryAnalysis = () => {
       {/* ════════════════════════════════════════
           모바일(~md): 카드 레이아웃
           ════════════════════════════════════════ */}
-      <div className="flex md:hidden flex-col flex-1 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl overflow-hidden min-h-[400px]">
-        {/* 정렬 드롭다운 */}
-        <div className="flex items-center justify-end px-4 py-3 border-b border-gray-scale-10">
-          <select className="px-3 py-1.5 text-body-m-r text-gray-scale-70 bg-gray-scale-0 border border-gray-scale-30 rounded-full outline-none focus:border-primary-50 cursor-pointer shadow-sm">
-            <option value="date">분석일 순</option>
-          </select>
-        </div>
-
+      <div className="flex md:hidden flex-col flex-1 rounded-3xl overflow-hidden min-h-[400px]">
         {/* 카드 리스트 */}
-        <div className="flex flex-col overflow-y-auto divide-y divide-gray-scale-10">
+        <div className="flex flex-col gap-3 overflow-y-auto">
           {items.length === 0 ? (
             <div className="flex items-center justify-center flex-1 py-20 text-body-m-r text-gray-scale-50">분석 히스토리가 없습니다.</div>
           ) : (
