@@ -5,11 +5,9 @@ import { history, historyHover } from '../../../../../assets';
 import { useAuthStore } from '../../../../../store/useAuthStore';
 import { deleteCalculatorHistory, getFavoriteCalculatorHistory, toggleFavoriteCalculatorHistory } from '../../../../../api/mypageApi';
 import type { CalculatorHistoryItem } from '../../../../../type/historyTypes';
-import { useNavigate } from 'react-router';
 import { formatDate } from '../../../../../hooks/useFormatDate';
 
 const SaveHistoryCalculator = () => {
-  const navigate = useNavigate();
   const isLogin = !!useAuthStore((state) => state.accessToken);
   const [items, setItems] = useState<CalculatorHistoryItem[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
