@@ -25,7 +25,7 @@ const GuideLayout = ({ breadcrumbItems, sidebarContent, children }: GuideLayoutP
         </main>
 
         {/* 3. 우측 사이드바 영역 (스크롤 따라다니게 sticky 적용) */}
-        <aside className="w-[280px] flex-shrink-0 sticky top-24">
+        <aside className="hidden md:block w-[280px] flex-shrink-0 sticky top-24">
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-scale-10">{sidebarContent}</div>
         </aside>
       </div>

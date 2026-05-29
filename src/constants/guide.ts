@@ -2,12 +2,14 @@
  * 가이드 페이지에 사용하는 상수 관리
  */
 
+import { guideIconEDI } from '../assets';
+
 export const dictionaryItems = [
   // 현재 정의된 4번 EDI 코드만 존재 나머지 생성 시 주석 해제
   // { id: 1, category: '보험 상식', title: '실손보험 알아보기', src: '' },
   // { id: 2, category: '보험 상식', title: '실손보험 세대 구분법', src: '' },
   // { id: 3, category: '보험 상식', title: '청구 시 필수 서류', src: '' },
-  { id: 4, category: '보험 용어', title: 'EDI 코드 알아보기', src: '/guide/edi' },
+  { id: 4, category: '보험 용어', title: 'EDI 코드 알아보기', src: '/guide/edi', imgSrc: guideIconEDI, bgColor: 'bg-[#8FA2FF]' },
 ] as const;
 
 export const faqData = [

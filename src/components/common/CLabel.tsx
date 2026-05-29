@@ -7,7 +7,7 @@ interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 const CLabel = ({ children, className = '', variant, size = 'sm', ...props }: LabelProps) => {
-  const baseStyle = 'items-center justify-center rounded transition-colors border font-semibold';
+  const baseStyle = 'items-center justify-center rounded transition-colors border ';
 
   const variants = {
     contract: 'bg-primary-10 text-primary-40', // 계약 유형
@@ -18,8 +18,8 @@ const CLabel = ({ children, className = '', variant, size = 'sm', ...props }: La
   };
 
   const sizes = {
-    sm: 'px-4  py-2 text-sm',
-    md: 'px-6 py-2',
+    sm: 'px-2  py-1 text-sm',
+    md: 'px-4 py-2',
     lg: 'px-8 py-3 text-lg',
   };
 

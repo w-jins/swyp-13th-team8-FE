@@ -14,7 +14,7 @@ const InsuranceModalCard = ({ item, isSelected, onSelect }: InsuranceModalCardPr
   return (
     <div
       onClick={() => onSelect(item)}
-      className={`flex cursor-pointer flex-col gap-4 rounded-2xl border p-5 transition-all duration-200 min-h-[160px]
+      className={`flex cursor-pointer flex-col gap-4 rounded-2xl border p-5 transition-all duration-200 md:min-h-[160px]
               ${
                 isSelected
                   ? 'border-primary-50 bg-primary-10/10' // 선택됨
@@ -22,7 +22,6 @@ const InsuranceModalCard = ({ item, isSelected, onSelect }: InsuranceModalCardPr
               }`}
     >
       <div className="flex gap-3">
-        {/* 로고 영역 (차후 CImg를 이용해 실제 이미지로 변경) */}
         <CImg className="w-8 h-8" src={insuranceCompany?.src} alt="보험사" />
 
         <div className="flex flex-col gap-1">
@@ -33,27 +32,27 @@ const InsuranceModalCard = ({ item, isSelected, onSelect }: InsuranceModalCardPr
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1">
         {item.generation && (
-          <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="generation">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="generation">
             {item.generation}세대
           </CLabel>
         )}
 
         {item.contractType && (
-          <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="contract">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="contract">
             {item.contractType}
           </CLabel>
         )}
 
         {item.coverageStructure && (
-          <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="coverage">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="coverage">
             {item.coverageStructure}
           </CLabel>
         )}
 
         {item.cautionPoint && (
-          <CLabel className="text-body-s-r flex md:py-1 md:px-3" variant="caution">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="caution">
             {item.cautionPoint}
           </CLabel>
         )}

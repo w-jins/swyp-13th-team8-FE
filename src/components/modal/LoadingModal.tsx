@@ -11,7 +11,7 @@ const LoadingModal = ({ onClose }: LoadingModalProps) => {
   const location = useLocation();
   const pathName = location.pathname;
   return (
-    <CModal cancel={false} onClose={onClose}>
+    <CModal cancel={false} onClose={onClose} position="resCenter">
       <div className="flex flex-col items-center transform transition-all">
         <div className="flex items-center justify-center mb-6">
           <CImg src={loading} alt="로딩" />

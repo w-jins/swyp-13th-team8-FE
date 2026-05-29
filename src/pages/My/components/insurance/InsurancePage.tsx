@@ -41,7 +41,7 @@ const InsurancePage = () => {
           <p className="text-body-m-r text-gray-scale-40">등록된 보험이 없습니다. 플러스 버튼을 눌러 등록을 시작해보세요.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {insurances.map((ins) => (
             <InsuranceCard
               key={ins.userInsuranceId}

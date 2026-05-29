@@ -32,17 +32,17 @@ const LogoutModal = ({ onClose }: LogoutModalProps) => {
   };
 
   return (
-    <CModal cancel={false} onClose={onClose}>
+    <CModal cancel={false} onClose={onClose} position="responsive">
       <div className="flex flex-col items-center transform transition-all gap-3">
         <div className="flex items-center justify-center mb-6">
           <CImg src={logout} alt="로딩" />
         </div>
         <p className="text-title-h2">로그아웃 하시겠습니까?</p>
         <div className="flex w-full gap-2">
-          <CButton onClick={onClose} className="border border-gray-scale-30 w-1/2 md:px-4 md:py-3">
+          <CButton onClick={onClose} className="border border-gray-scale-30 w-1/2 px-5 py-4 ">
             취소
           </CButton>
-          <CButton onClick={logoutClickHandler} className="w-1/2 md:px-4 md:py-3 bg-primary-50 text-primary-0">
+          <CButton onClick={logoutClickHandler} className="w-1/2 px-5 py-4 bg-primary-50 text-primary-0">
             로그아웃
           </CButton>
         </div>

@@ -37,10 +37,10 @@ const CalculatorForm = () => {
     setCalcForm({ medicalCost: parseInt(onlyNumber) });
   };
   return (
-    <div className="flex flex-col w-full h-full justify-center rounded-3xl px-10 py-5 bg-gray-scale-0 relative">
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-47.25 border border-gray-scale-10"></span>{' '}
-      <div className="flex flex-row gap-23 mb-10">
-        <div className="flex flex-col w-1/2 h-69.75 gap-8">
+    <div className="flex flex-col flex-[2.3] h-full justify-center rounded-3xl px-10 py-5 bg-gray-scale-0 relative">
+      <span className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-47.25 border border-gray-scale-10"></span>{' '}
+      <div className="flex flex-col md:flex-row gap-4 md:gap-23 mb-10">
+        <div className="flex flex-col md:w-1/2 md:h-69.75 gap-4 md:gap-8">
           <div>
             <p className="mb-3">
               보험 선택하기 <span className="text-red-600">*</span>
@@ -57,7 +57,7 @@ const CalculatorForm = () => {
                 children="내 보험에서 불러오기"
               />
             ) : (
-              <div className="w-73.75 h-10.75 px-1 gap-1 rounded-[10px] bg-primary-5 flex flex-row items-center">
+              <div className="w-full h-10.75 px-1 gap-1 rounded-[10px] bg-primary-5 flex flex-row items-center">
                 <div className="w-7 h-7 bg-primary-40 rounded-full"></div>
                 <p className="text-gray-scale-60 text-body-s-r flex-1">{insuranceInfo.productName}</p>
               </div>
@@ -109,7 +109,7 @@ const CalculatorForm = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-1/2 h-69.75 gap-8">
+        <div className="flex flex-col md:w-1/2 md:h-69.75 gap-4 md:gap-8">
           <div>
             <p className="mb-3">
               총 진료비 <span className="text-red-600">*</span>

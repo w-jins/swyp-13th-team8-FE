@@ -13,7 +13,7 @@ const JoinModal = ({ onClose }: LoginModalProps) => {
   const { setIsNewUser } = useAuthStore();
 
   return (
-    <CModal cancel={false} onClose={onClose}>
+    <CModal cancel={false} onClose={onClose} position="responsive">
       <div className="flex flex-col gap-4 items-center">
         <div className="py-5">
           <CImg className="w-30 h-30" src={signup} alt="로고이미지" />
@@ -29,7 +29,7 @@ const JoinModal = ({ onClose }: LoginModalProps) => {
               setIsNewUser(false);
               onClose();
             }}
-            className="w-39 border border-gray-scale-30 bg-gray-scale-0 px-5 py-4 items-center justify-center cursor-pointer"
+            className="w-1/2 border border-gray-scale-30 bg-gray-scale-0 px-5 py-4 items-center justify-center cursor-pointer"
           >
             <span className="text-gray-scale-60">홈으로 돌아가기</span>
           </CButton>
@@ -40,7 +40,7 @@ const JoinModal = ({ onClose }: LoginModalProps) => {
               setIsNewUser(false);
               onClose();
             }}
-            className="bg-primary-50  w-39 px-5 py-4 items-center justify-center cursor-pointer"
+            className="bg-primary-50 w-1/2 px-5 py-4 items-center justify-center cursor-pointer"
           >
             <span className="text-gray-scale-0">등록하기</span>
           </CButton>
