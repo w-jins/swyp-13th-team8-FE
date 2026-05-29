@@ -80,6 +80,7 @@ export { default as logout } from './images/logout.png';
 export { default as signup } from './images/signup.png';
 export { default as terms } from './images/terms.png';
 export { default as welcome } from './images/welcome.png';
+export { default as refund } from './images/Calculator_refund.png';
 
 // 홈 화면 images
 export { default as bannerAnalysis } from './images/banner_analysis.png';

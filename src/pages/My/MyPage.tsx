@@ -7,7 +7,7 @@ const MyPage = () => {
   return (
     <div>
       <CBreadcrumb items={[{ label: '마이페이지' }]} />
-      <div className="flex gap-7 mt-10">
+      <div className="flex flex-col md:flex-row gap-7 mt-10">
         <Profile />
         <InsuranceList />
       </div>
