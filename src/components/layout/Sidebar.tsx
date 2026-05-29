@@ -26,7 +26,7 @@ const Sidebar = () => {
                 variant={isActive ? 'tertiary' : undefined}
               >
                 <CImg src={isActive ? item.hover : item.src} alt={item.label} />
-                <span className="inline-block text-body-s-m xl:text-body-l-sb whitespace-nowrap">{item.label}</span>
+                <span className="inline-block text-body-s-m xl:text-body-m-m whitespace-nowrap">{item.label}</span>
               </CButton>
             )}
           </NavLink>

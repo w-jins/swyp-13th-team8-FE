@@ -39,7 +39,6 @@ const AnalysisResult = () => {
       const fetchData = async () => {
         try {
           const res = await getAnalysisHistory(parseInt(id));
-          console.log(res.data);
           setAnalysisData(res.data);
         } catch (e) {
           console.log(e);
@@ -81,7 +80,7 @@ const AnalysisResult = () => {
               { label: '약관 분석 결과', path: '/analysis/result' },
             ]}
           />
-          <p className="text-title-h2 font-bold text-gray-scale-90">약관 분석 결과</p>
+          <p className="text-title-h3 text-gray-scale-90">약관 분석 결과</p>
         </div>
         <div className="flex flex-col flex-1 border-t border-gray-scale-30">
           <div className="bg-primary-0 px-10 py-4 border-b border-gray-scale-30">
