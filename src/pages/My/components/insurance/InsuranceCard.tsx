@@ -10,44 +10,58 @@ interface InsuranceCardProps {
   onDelete: (e: React.MouseEvent, id: number) => void;
   onSelect: (ins: Insurance) => void;
 }
+
 const InsuranceCard = ({ ins, isDeleting, onDelete, onSelect }: InsuranceCardProps) => {
   const insuranceCompany = useCompanyImg(ins?.companyName);
+
   return (
-    <div className="bg-primary-0 rounded-3xl border border-gray-scale-10 p-10 min-h-[250px] shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between mb-10">
-        <div className="flex gap-3 flex-wrap">
-          <CLabel variant="generation" size="sm">
-            {ins.generation}세대
-          </CLabel>
-        </div>
-        <div className="flex items-center gap-5">
-          {/* 삭제 버튼 */}
-          <button
-            className="cursor-pointer shrink-0 text-gray-scale-30 hover:text-red-400 transition-colors disabled:opacity-40"
-            onClick={(e) => onDelete(e, ins.userInsuranceId)}
-            disabled={isDeleting}
-          >
-            {isDeleting ? (
-              <div className="w-5 h-5 border-2 border-red-300 border-t-red-500 rounded-full animate-spin" />
-            ) : (
-              <span className="text-xl">삭제</span>
+    <div className="px-4">
+      <div className="bg-white rounded-2xl border border-gray-scale-10 p-5 shadow-sm hover:shadow-md transition-shadow">
+        {/* 레이블 + 삭제/이동 버튼 */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex gap-1.5 flex-wrap">
+            <CLabel variant="generation" size="sm">
+              {ins.generation}세대
+            </CLabel>
+            {ins.contractType && (
+              <CLabel variant="contract" size="sm">
+                {ins.contractType}
+              </CLabel>
             )}
-          </button>
-
-          {/* 상세보기 버튼 */}
-          <button className="cursor-pointer shrink-0" onClick={() => onSelect(ins)}>
-            <CImg src={right} alt="상세보기" className="w-10 h-10 opacity-30" />
-          </button>
+            {ins.coverageStructure && (
+              <CLabel variant="coverage" size="sm">
+                {ins.coverageStructure}
+              </CLabel>
+            )}
+            {ins.cautionPoint && (
+              <CLabel variant="caution" size="sm">
+                {ins.cautionPoint}
+              </CLabel>
+            )}
+          </div>
+          <div className="flex items-center gap-3 shrink-0 ml-2">
+            <button
+              className="cursor-pointer text-gray-scale-30 hover:text-red-400 transition-colors disabled:opacity-40 text-[13px]"
+              onClick={(e) => onDelete(e, ins.userInsuranceId)}
+              disabled={isDeleting}
+            >
+              {isDeleting ? <div className="w-4 h-4 border-2 border-red-300 border-t-red-500 rounded-full animate-spin" /> : <span>삭제</span>}
+            </button>
+            <button className="cursor-pointer" onClick={() => onSelect(ins)}>
+              <CImg src={right} alt="상세보기" className="w-6 h-6 opacity-30" />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center gap-7">
-        <CImg className="w-14 h-14" src={insuranceCompany?.src} alt="보험사" />
-        <div className="">
-          <p className="text-title-h2 text-gray-scale-80 leading-snug">{ins.productName}</p>
-          <p className="text-body-l-r text-gray-scale-50 mt-5">
-            {ins.companyName} · {ins.joinDate}
-          </p>
+        {/* 보험사 로고 + 상품명/보험사명 */}
+        <div className="flex items-center gap-3">
+          <CImg className="w-10 h-10 shrink-0" src={insuranceCompany?.src} alt="보험사" />
+          <div className="min-w-0">
+            <p className="text-[15px] font-bold text-gray-scale-80 leading-snug truncate">{ins.productName}</p>
+            <p className="text-[12px] text-gray-scale-50 mt-1 truncate">
+              {ins.companyName} · {ins.joinDate} 가입
+            </p>
+          </div>
         </div>
       </div>
     </div>
