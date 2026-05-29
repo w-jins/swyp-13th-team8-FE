@@ -27,9 +27,9 @@ const InsuranceList = () => {
         </button>
       </div>
 
-      <div className="flex w-full gap-5">
+      <div className="flex flex-col md:flex-row w-full gap-5">
         {firstInsurance && (
-          <div className="w-[450px] h-[250px] bg-primary-0 rounded-[24px] border border-gray-scale-0 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="w-full md:w-[450px] bg-primary-0 rounded-[24px] border border-gray-scale-0 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start">
               <CImg className="w-14 h-14" src={insuranceCompany?.src} alt="보험사" />
               <button className="p-2 -m-2 rounded-full transition-colors cursor-pointer" onClick={() => setSelectedInsurance(firstInsurance)}>
@@ -37,7 +37,7 @@ const InsuranceList = () => {
               </button>
             </div>
             <div className="mt-4">
-              <h3 className="text-title-h3 leading-tight ">{firstInsurance.productName}</h3>
+              <h3 className="text-title-h3 leading-tight">{firstInsurance.productName}</h3>
               <p className="py-3 mb-2 text-body-m-r text-gray-scale-50">
                 {firstInsurance.companyName} · {firstInsurance.joinDate}
               </p>
@@ -68,7 +68,7 @@ const InsuranceList = () => {
         <button
           disabled={!isLogin}
           onClick={() => navigate('/mypage/insurance/add')}
-          className="h-[250px] flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
+          className="h-[120px] md:h-[250px] flex-1 flex flex-col items-center justify-center bg-gray-scale-10 p-4 rounded-[24px] border-1 border-dashed border-gray-scale-20 hover:bg-gray-scale-10 transition-all group"
         >
           <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
             <div className="absolute inset-0 bg-primary-20 rounded-full opacity-40 group-hover:scale-125 transition-transform duration-300"></div>
