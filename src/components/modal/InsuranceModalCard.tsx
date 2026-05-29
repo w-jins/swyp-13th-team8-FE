@@ -34,25 +34,25 @@ const InsuranceModalCard = ({ item, isSelected, onSelect }: InsuranceModalCardPr
 
       <div className="flex flex-wrap gap-1">
         {item.generation && (
-          <CLabel className="text-body-s-r flex sm:py-1 sm:px-2" variant="generation">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="generation">
             {item.generation}세대
           </CLabel>
         )}
 
         {item.contractType && (
-          <CLabel className="text-body-s-r flex sm:py-1 sm:px-2" variant="contract">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="contract">
             {item.contractType}
           </CLabel>
         )}
 
         {item.coverageStructure && (
-          <CLabel className="text-body-s-r flex sm:py-1 sm:px-2" variant="coverage">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="coverage">
             {item.coverageStructure}
           </CLabel>
         )}
 
         {item.cautionPoint && (
-          <CLabel className="text-body-s-r flex sm:py-1 sm:px-2" variant="caution">
+          <CLabel className="sm:text-body-s-r flex sm:py-1 sm:px-2" variant="caution">
             {item.cautionPoint}
           </CLabel>
         )}

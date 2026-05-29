@@ -13,8 +13,7 @@ interface LoginModalProps {
 
 const LoginModal = ({ onClose }: LoginModalProps) => {
   const navigate = useNavigate();
-  const kakaoClientId = '2eb191a7174666b88291d1e839e1d5fe';
-  //const kakaoClientId = import.meta.env.VITE_KAKAO_JS_KEY;//
+  const kakaoClientId = import.meta.env.VITE_KAKAO_JS_KEY;
 
   const { setAccessToken, setRefreshToken, setIsNewUser } = useAuthStore();
   const kakaoOnSuccess = async (data: any) => {
