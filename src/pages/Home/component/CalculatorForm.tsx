@@ -37,7 +37,7 @@ const CalculatorForm = () => {
     setCalcForm({ medicalCost: parseInt(onlyNumber) });
   };
   return (
-    <div className="flex flex-col flex-[2.5] h-full justify-center rounded-3xl px-10 py-5 bg-gray-scale-0 relative">
+    <div className="flex flex-col flex-[2.3] h-full justify-center rounded-3xl px-10 py-5 bg-gray-scale-0 relative">
       <span className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-47.25 border border-gray-scale-10"></span>{' '}
       <div className="flex flex-col md:flex-row gap-4 md:gap-23 mb-10">
         <div className="flex flex-col md:w-1/2 md:h-69.75 gap-4 md:gap-8">

@@ -1,6 +1,8 @@
 import CBreadcrumb from '../../components/common/CBreadcrumb';
 import { useNavigate } from 'react-router';
 import { dictionaryItems } from '../../constants/guide';
+import CImg from '../../components/common/CImg';
+import { guideAbility, guideBanner, guideFAQ, guideIconAbility, guideIconBannerArrow, guideResult } from '../../assets';
 
 const Guide = () => {
   const navigate = useNavigate();
@@ -14,13 +16,16 @@ const Guide = () => {
 
       <div className=" mx-auto flex flex-col gap-8">
         {/* 2. 상단 히어로 배너 */}
-        <section className="bg-[#5284FA] rounded-[32px] p-12 lg:p-16 text-white shadow-sm">
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">실손핏, 핏하게 이해해보세요.</h1>
-          <p className="text-blue-50 text-base md:text-lg leading-relaxed font-medium">
-            보험 기초 이해부터 기능 사용법까지,
-            <br />
-            실손핏을 제대로 사용하는 방법을 알려드려요.
-          </p>
+        <section className="bg-[#3F7DFA] rounded-3xl md:rounded-tl-full md:rounded-bl-full  text-white shadow-sm">
+          <div className="relative p-12 lg:p-16">
+            <CImg className="hidden md:block absolute bottom-0 right-5" src={guideBanner} alt="메인 배너" />
+            <p className="text-title-h1 font-bold mb-6 tracking-tight">실손핏, 핏하게 이해해보세요.</p>
+            <p className="text-blue-50 text-base text-body-sm-r leading-relaxed font-medium">
+              보험 기초 이해부터 기능 사용법까지,
+              <br />
+              실손핏을 제대로 사용하는 방법을 알려드려요.
+            </p>
+          </div>
         </section>
 
         {/* 3. 메인 하단 그리드 레이아웃 (좌측 콘텐츠 2 / 우측 사이드바 1) */}
@@ -30,28 +35,35 @@ const Guide = () => {
             {/* 기능 한눈에 보기 카드 */}
             <div
               onClick={() => navigate('/guide/feature')}
-              className="bg-[#DEF1FF] rounded-[32px] p-10 h-[260px] flex flex-col justify-center cursor-pointer transition-transform hover:-translate-y-1"
+              className="flex flex-col relative justify-center cursor-pointer transition-transform hover:-translate-y-1"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">기능 한눈에 보기</h2>
-              <p className="text-gray-700 leading-relaxed font-medium">
-                신규 이용자라면?
-                <br />
-                실손핏의 주요 기능과 사용법을 한눈에 알아보세요.
-              </p>
+              <CImg className="w-full block object-top-left" src={guideIconAbility} alt="배경이미지" />
+              <CImg className="hidden md:block absolute bottom-7 right-5" src={guideAbility} alt="기능카드" />
+
+              <div className="absolute inset-0 flex flex-col justify-center pl-7 z-10">
+                <p className="text-title-h4 md:text-title-h3 pb-2">기능 한눈에 보기</p>
+                <p className="text-gray-scale-80 text-body-s-r md:text-body-m-r">
+                  신규 이용자라면?
+                  <br />
+                  실손핏의 주요 기능과 사용법을 한눈에 알아보세요.
+                </p>
+              </div>
             </div>
 
             {/* 하단 서브 카드 2개 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white border border-gray-100 rounded-[32px] p-10 h-[260px] flex flex-col shadow-sm cursor-pointer transition-transform hover:-translate-y-1">
+              <div className="relative bg-white border border-gray-100 rounded-[32px] px-8 py-10 h-[260px] flex flex-col shadow-sm cursor-pointer transition-transform hover:-translate-y-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">내 결과 이해하기</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   도출된 분석, 계산 결과를
                   <br />더 똑똑하게 읽어볼까요?
                 </p>
+                <CImg className="absolute left-5 bottom-5" src={guideIconBannerArrow} alt="결과 이해하기" />
+                <CImg className="absolute right-7 bottom-10" src={guideResult} alt="결과 이해하기" />
               </div>
               <div
                 onClick={() => navigate('/guide/question')}
-                className="bg-white border border-gray-100 rounded-[32px] p-10 h-[260px] flex flex-col shadow-sm cursor-pointer transition-transform hover:-translate-y-1"
+                className="relative bg-white border border-gray-100 rounded-[32px] px-8 py-10 h-[260px] flex flex-col shadow-sm cursor-pointer transition-transform hover:-translate-y-1"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4">자주 묻는 질문</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
@@ -59,6 +71,8 @@ const Guide = () => {
                   <br />
                   답변을 모아봤어요.
                 </p>
+                <CImg className="absolute right-7 bottom-10" src={guideFAQ} alt="결과 이해하기" />
+                <CImg className="absolute left-5 bottom-5" src={guideIconBannerArrow} alt="결과 이해하기" />
               </div>
             </div>
           </div>
@@ -78,7 +92,9 @@ const Guide = () => {
                 >
                   <div className="flex items-center gap-4">
                     {/* 이미지 자리 표시자 */}
-                    <div className="w-[52px] h-[52px] bg-gray-200 rounded-full flex-shrink-0 group-hover:bg-gray-300 transition-colors"></div>
+                    <div className={`w-[52px] h-[52px] rounded-full ${item.bgColor} `}>
+                      <CImg className="rounded-full" src={item.imgSrc} alt="사진" />
+                    </div>
                     <div className="flex flex-col gap-1">
                       <span className="text-[13px] font-semibold text-[#5284FA]">{item.category}</span>
                       <span className="text-base font-bold text-gray-800">{item.title}</span>

@@ -5,7 +5,7 @@ import { useCalcStore } from '../../store/useCalcStore.ts';
 import { SideBarItems } from './Sidebar';
 import { useAuthStore } from '../../store/useAuthStore.ts';
 import { useUserStore } from '../../store/useUserStore.ts';
-import { mypageHistory, mypageLogout, mypageSetting, mypageUser } from '../../assets/index.ts';
+import { mypageHistory, mypageLogout, mypageSetting, mypageUser, sidebar } from '../../assets/index.ts';
 import { useEffect } from 'react';
 import { useModalStore } from '../../store/useModalStore.ts';
 
@@ -119,10 +119,18 @@ const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
           </nav>
 
           {/* 4. 하단 배너 영역 */}
-          <div className="px-6 pb-8 mt-auto flex flex-col gap-6">
+          <div className="px-6 pb-8 mt-auto flex flex-col gap-3">
             {/* 하단 배너 */}
-            <div className="w-full h-24 bg-gray-10 rounded-xl flex items-center justify-center text-gray-scale-50 text-body-s-r">
-              {/* 배너 이미지 영역 */}
+            <div onClick={() => navigate('/guide')} className="mt-auto md:px-2 xl:px-4">
+              <div className="relative px-3 py-4 rounded-3xl bg-linear-to-b from-[#518AFF] to-[#CFDDFF]">
+                <p className="text-white text-title-h4 pb-2">
+                  실손핏
+                  <br />
+                  완벽 가이드
+                </p>
+                <CButton className="bg-primary-80 text-white md:px-2 md:py-1" children="바로가기" />
+                <CImg className="absolute bottom-3 right-2" src={sidebar} alt="바로가기" />
+              </div>
             </div>
 
             {/* 로그인 / 로그아웃 버튼 */}
