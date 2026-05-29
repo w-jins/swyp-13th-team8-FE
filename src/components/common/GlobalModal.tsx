@@ -32,7 +32,7 @@ const GlobalModal = () => {
         return null;
     }
   };
-  return <>{renderModal()};</>;
+  return <>{renderModal()}</>;
 };
 
 export default GlobalModal;

@@ -21,7 +21,6 @@ export const sseConnectAPI = async (
     onmessage(event) {
       // 백엔드의 sseEmitters.send(clientId, name: "connected", clientId) 부분 처리
       if (event.event === 'connected') {
-        console.log('SSE 연결 성공! 넘어온 ClientId:', event.data);
         onSuccess(event.data); // 컴포넌트로 데이터 전달
       }
       onMessage(event);
