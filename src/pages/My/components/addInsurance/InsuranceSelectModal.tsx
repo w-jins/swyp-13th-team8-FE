@@ -87,22 +87,25 @@ const InsuranceSelectModal = ({ company, year, month, selectedInsurance, onSelec
   const getGenerationTag = (gen: number) => `${gen}세대`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="relative bg-white rounded-4xl shadow-2xl w-full max-w-[540px] mx-4 p-10">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/30">
+      <div className="relative bg-white rounded-t-4xl sm:rounded-4xl shadow-2xl w-full sm:max-w-[540px] sm:mx-4 p-8 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button onClick={onClose} className="absolute top-6 right-6 opacity-30 hover:opacity-100 transition-opacity">
           <img src={close} alt="close" className="w-5 h-5" />
         </button>
 
-        <div className="text-center mt-4">
-          <p className="text-title-h2 font-bold text-gray-scale-80 mb-2">다음 중 해당하는 보험을 선택해주세요.</p>
-          <p className="text-[14px] text-gray-scale-40 mb-8 leading-relaxed">
+        {/* 모바일 핸들 바 */}
+        <div className="sm:hidden w-10 h-1 bg-gray-scale-20 rounded-full mx-auto mb-6" />
+
+        <div className="text-center mt-2 sm:mt-4">
+          <p className="text-[17px] sm:text-title-h2 font-bold text-gray-scale-80 mb-2">다음 중 해당하는 보험을 선택해주세요.</p>
+          <p className="text-[13px] sm:text-[14px] text-gray-scale-40 mb-6 sm:mb-8 leading-relaxed">
             기입하신 정보를 바탕으로 검색한 결과입니다.
             <br />
             해당하는 보험이 없다면 보험증서를 확인해주세요.
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 mb-10 min-h-[220px] overflow-y-auto">
+        <div className="flex flex-col gap-3 sm:gap-4 mb-8 sm:mb-10 min-h-[220px]">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center h-[220px] gap-3">
               <div className="w-8 h-8 border-[3px] border-primary-10 border-t-primary-50 rounded-full animate-spin" />
@@ -114,14 +117,13 @@ const InsuranceSelectModal = ({ company, year, month, selectedInsurance, onSelec
             </div>
           ) : (
             options.map((ins) => {
-              // Response 필드로 태그 구성
               const tags = [getGenerationTag(ins.generation), ins.coverageStructure, ins.contractType, ins.cautionPoint].filter(Boolean);
 
               return (
                 <button
                   key={ins.id}
                   onClick={() => onSelect(ins.id)}
-                  className={`w-full flex flex-col p-6 rounded-2xl border transition-all duration-200 text-left ${
+                  className={`w-full flex flex-col p-4 sm:p-6 rounded-2xl border transition-all duration-200 text-left ${
                     selectedInsurance === ins.id
                       ? 'border-primary-50 bg-primary-5 ring-1 ring-primary-50'
                       : 'border-gray-scale-10 bg-white hover:border-gray-scale-20 shadow-sm'
@@ -130,7 +132,7 @@ const InsuranceSelectModal = ({ company, year, month, selectedInsurance, onSelec
                   <div className="flex items-start justify-between gap-4 w-full">
                     <div className="flex-1">
                       <p
-                        className={`text-[16px] font-bold mb-3 leading-snug ${selectedInsurance === ins.id ? 'text-primary-50' : 'text-gray-scale-80'}`}
+                        className={`text-[14px] sm:text-[16px] font-bold mb-2 sm:mb-3 leading-snug ${selectedInsurance === ins.id ? 'text-primary-50' : 'text-gray-scale-80'}`}
                       >
                         {ins.productName}
                       </p>
@@ -155,6 +157,7 @@ const InsuranceSelectModal = ({ company, year, month, selectedInsurance, onSelec
             })
           )}
         </div>
+
         {same ? (
           <>
             {alert('같은 보험은 등록이 안됩니다!')}
@@ -163,7 +166,8 @@ const InsuranceSelectModal = ({ company, year, month, selectedInsurance, onSelec
         ) : (
           <></>
         )}
-        <div className="flex flex-col gap-4">
+
+        <div className="flex flex-col gap-3 sm:gap-4">
           <button
             onClick={onConfirm}
             disabled={!selectedInsurance || isLoading}

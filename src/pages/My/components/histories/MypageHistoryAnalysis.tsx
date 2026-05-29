@@ -16,11 +16,12 @@ const MypageHistoryAnalysis = () => {
       const data = await getAnalysisHistory(currentPage);
       const rawList = data?.content ?? data ?? [];
       setItems(rawList);
-      if (data?.tatalPages) setTotalPages(data.totalPages);
+      if (data?.totalPages) setTotalPages(data.totalPages);
     } catch (e) {
       console.error('약관 분석 히스토리 조회 실패', e);
     }
   }, [currentPage]);
+
   const handleToggleSave = async (id: number) => {
     await toggleSaveAnalysisHistory(id);
     setItems((prev) => prev.map((item) => (item.analysisHistoryId === id ? { ...item, isFavorite: !item.isFavorite } : item)));
@@ -39,11 +40,26 @@ const MypageHistoryAnalysis = () => {
     }
   }, [currentPage, isLogin, fetchHistory]);
 
+  // 페이지네이션 버튼 범위 계산 (최대 5개, 슬라이딩 윈도우)
+  const getPaginationRange = () => {
+    const maxVisible = 5;
+    const half = Math.floor(maxVisible / 2);
+    let start = Math.max(0, currentPage - half);
+    let end = start + maxVisible;
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(0, end - maxVisible);
+    }
+    return Array.from({ length: end - start }, (_, i) => start + i);
+  };
+
   return (
     <div className="flex flex-col w-full h-full pt-4">
-      {/* 1. 리스트 컨테이너 (시스템 배경색, 그림자, 테두리 적용) */}
-      <div className="flex flex-col flex-1 p-6 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
-        {/* 2. 테이블 헤더 */}
+      {/* ════════════════════════════════════════
+          웹(md+): 기존 테이블 레이아웃
+          ════════════════════════════════════════ */}
+      <div className="hidden md:flex flex-col flex-1 p-6 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl min-h-[400px]">
+        {/* 테이블 헤더 */}
         <div className="flex items-center px-5 pb-4 mb-4 border-b border-gray-scale-10">
           <div className="w-12 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">저장</div>
           <div className="w-24 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">분석일</div>
@@ -52,30 +68,49 @@ const MypageHistoryAnalysis = () => {
           <div className="flex-1 text-center text-body-m-m text-gray-scale-50 border-r border-gray-scale-20">약관 이름</div>
           <div className="text-center text-body-m-m text-gray-scale-50 w-44">개요</div>
 
-          {/* 우측 상단 정렬 드롭다운 */}
+          {/* 정렬 드롭다운 */}
           <div className="flex justify-end w-32">
             <select className="px-3 py-1.5 text-body-m-r text-gray-scale-70 bg-gray-scale-0 border border-gray-scale-30 rounded-full outline-none focus:border-primary-50 cursor-pointer shadow-sm">
               <option value="date">분석일 순</option>
-              {/* 추후 개발 */}
-              {/* <option value="name">이름 순</option> */}
             </select>
           </div>
         </div>
 
-        {/* 3. 스크롤 가능한 리스트 영역 */}
+        {/* 스크롤 가능한 리스트 */}
         <div className="flex flex-col gap-3 overflow-y-auto">
           {items.length === 0 ? (
             <div className="flex items-center justify-center flex-1 py-20 text-body-m-r text-gray-scale-50">분석 히스토리가 없습니다.</div>
           ) : (
-            items.map((item) => (
-              // 개별 아이템 카드
-              <MyPageAnalysisCard key={item.analysisHistoryId} item={item} onDelete={handleDelete} onFavorite={handleToggleSave} />
-            ))
+            items.map((item) => <MyPageAnalysisCard key={item.analysisHistoryId} item={item} onDelete={handleDelete} onFavorite={handleToggleSave} />)
           )}
         </div>
       </div>
-      {/* 4. 하단 페이지네이션 영역 추가! */}
-      <div className="flex items-center justify-center gap-2 mt-6 mb-4">
+
+      {/* ════════════════════════════════════════
+          모바일(~md): 카드 레이아웃
+          ════════════════════════════════════════ */}
+      <div className="flex md:hidden flex-col flex-1 bg-gray-scale-0 border border-gray-scale-20 shadow-main rounded-3xl overflow-hidden min-h-[400px]">
+        {/* 정렬 드롭다운 */}
+        <div className="flex items-center justify-end px-4 py-3 border-b border-gray-scale-10">
+          <select className="px-3 py-1.5 text-body-m-r text-gray-scale-70 bg-gray-scale-0 border border-gray-scale-30 rounded-full outline-none focus:border-primary-50 cursor-pointer shadow-sm">
+            <option value="date">분석일 순</option>
+          </select>
+        </div>
+
+        {/* 카드 리스트 */}
+        <div className="flex flex-col overflow-y-auto divide-y divide-gray-scale-10">
+          {items.length === 0 ? (
+            <div className="flex items-center justify-center flex-1 py-20 text-body-m-r text-gray-scale-50">분석 히스토리가 없습니다.</div>
+          ) : (
+            items.map((item) => <MyPageAnalysisCard key={item.analysisHistoryId} item={item} onDelete={handleDelete} onFavorite={handleToggleSave} />)
+          )}
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════
+          공통 페이지네이션
+          ════════════════════════════════════════ */}
+      <div className="flex items-center justify-center gap-1 mt-6 mb-4">
         {/* 이전 버튼 */}
         <button
           disabled={currentPage === 0}
@@ -88,16 +123,16 @@ const MypageHistoryAnalysis = () => {
           이전
         </button>
 
-        {/* 페이지 번호 (예시로 5개 렌더링, 실제로는 totalPages를 활용해 동적으로 구성) */}
+        {/* 페이지 번호 */}
         <div className="flex items-center gap-1">
-          {Array.from({ length: Math.min(5, totalPages) }, (_, i) => i).map((pageNum) => (
+          {getPaginationRange().map((pageNum) => (
             <button
               key={pageNum}
               onClick={() => setCurrentPage(pageNum)}
               className={`w-8 h-8 rounded-lg flex items-center justify-center text-body-m-m transition-colors ${
                 currentPage === pageNum
-                  ? 'bg-primary-50 text-gray-scale-0 font-bold' // 활성화 (파란 배경, 흰 글씨)
-                  : 'text-gray-scale-50 hover:bg-gray-scale-5 hover:text-gray-scale-70' // 비활성화
+                  ? 'bg-primary-50 text-gray-scale-0 font-bold'
+                  : 'text-gray-scale-50 hover:bg-gray-scale-5 hover:text-gray-scale-70'
               }`}
             >
               {pageNum + 1}
