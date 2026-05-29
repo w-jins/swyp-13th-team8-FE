@@ -88,11 +88,34 @@ export { default as terms } from './images/terms.png';
 export { default as welcome } from './images/welcome.png';
 
 // 홈 화면 images
+export { default as mainLanding } from './images/main-landing.png';
+export { default as mainFAQ } from './images/main-FAQ.png';
+export { default as mainGuide } from './images/main-guide.png';
+export { default as main } from './images/main-banner.png';
+export { default as mainAnalysis } from './images/main-analysis.png';
+export { default as mainArrow } from './icons/main-banner-arrow.svg';
+
 export { default as bannerAnalysis } from './images/banner_analysis.png';
 export { default as bannerGuide } from './images/main_banner_guide.png';
 export { default as bannerLanding } from './images/main_banner_landing.png';
 export { default as bannerTop } from './images/main_banner_top.png';
 export { default as pfp } from './images/pfp_default.png';
+
+// 가이드 페이지
+export { default as guideFAQ } from './images/guide-FAQ.png';
+export { default as guideAbility } from './images/guide-ability.png';
+export { default as guideBanner } from './images/guide-banner.png';
+export { default as guideResult } from './images/guide-result.png';
+export { default as guideIconAbility } from './icons/guide-ability-background.svg';
+export { default as guideIconBannerArrow } from './icons/guide-banner-arrow.svg';
+export { default as guideIconDictionary } from './icons/guide-dictionary-calendar.svg';
+export { default as guideIconEDI } from './icons/guide-icon-EDI.svg';
+export { default as guideIconGeneration } from './icons/guide-icon-generation.svg';
+export { default as guideIconInsurance } from './icons/guide-icon-insurance.svg';
+export { default as guideIconTerms } from './icons/guide-icon-terms.svg';
+
+// 사이드 바
+export { default as sidebar } from './images/sidebar_guide_banner.png';
 
 // big5
 export { default as db } from './images/db_logo.png';
