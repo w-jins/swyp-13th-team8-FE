@@ -38,7 +38,7 @@ const LandingPage = () => {
       {/* 1. 메인 섹션 */}
       <section className="relative w-full max-w-7xl h-137 mx-auto mb-180 bg-linear-to-b from-[#D9D9D9] to-[#FFFFFF] rounded-t-[40px]">
         <div>
-          <CImg src={heroBg} alt="메인 히어로 배너" />
+          <CImg src={heroBg} fetchPriority="high" alt="메인 히어로 배너" />
         </div>
         <div className="absolute flex flex-col gap-4 top-30 left-15">
           <p className="text-title-h1">
@@ -59,7 +59,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <CImg className="left-1/2 top-250 absolute h-53.25" src={landingLine} alt="라인" />
+      <CImg className="left-1/2 top-250 absolute h-53.25" loading="lazy" src={landingLine} alt="라인" />
 
       {/* 2. 문제 섹션  */}
       <section className="w-full pb-20">
@@ -76,7 +76,7 @@ const LandingPage = () => {
               >
                 <p className="text-gray-scale-60">{items.label}</p>
                 <div className="max-w-47 max-h-47 w-47 h-47 self-end">
-                  <CImg className="w-full h-full md:object-contain" src={items.src} alt="사진" />
+                  <CImg className="w-full h-full md:object-contain" loading="lazy" src={items.src} alt="사진" />
                 </div>
               </div>
             ))}
@@ -92,7 +92,7 @@ const LandingPage = () => {
             이러한 보험에 대해 이해 부족은 불완전한 가입과 과도한 보험 영업 피해로까지 이어질 수 있어요.
           </p>
           <div className="w-2/5">
-            <CImg className="" src={landingSolution} alt="캐릭터 활용" />
+            <CImg className="" src={landingSolution} loading="lazy" alt="캐릭터 활용" />
           </div>
           <span>
             <p className="text-title-h1">
@@ -115,16 +115,16 @@ const LandingPage = () => {
           </div>
 
           <div className="relative w-full flex items-center justify-center">
-            <CImg src={landingProfile} alt="대표이미지" />
-            <CImg className="absolute right-60 -top-35" src={landingProfile_1} alt="대표이미지" />
-            <CImg className="absolute left-20 -top-20" src={landingProfile_2} alt="대표이미지" />
-            <CImg className="absolute right-25 -top-8" src={landingProfile_3} alt="대표이미지" />
+            <CImg src={landingProfile} loading="lazy" alt="대표이미지" />
+            <CImg className="absolute right-60 -top-35" loading="lazy" src={landingProfile_1} alt="대표이미지" />
+            <CImg className="absolute left-20 -top-20" loading="lazy" src={landingProfile_2} alt="대표이미지" />
+            <CImg className="absolute right-25 -top-8" loading="lazy" src={landingProfile_3} alt="대표이미지" />
           </div>
         </div>
       </section>
 
       <section className="relative w-full h-75 bg-linear-to-t from-[#70B7FE] to-[#1A65FF]">
-        <CImg className="absolute -bottom-9.5 left-20" src={landingGuide} alt="이미지" />
+        <CImg className="absolute -bottom-9.5 left-20" loading="lazy" src={landingGuide} alt="이미지" />
 
         <div className="text-white absolute text-title-h1 right-50 top-35">
           피티와 함께 보는 <span className="inline-flex p-1 bg-white text-primary-50">실손핏 기능 가이드</span>
@@ -135,7 +135,7 @@ const LandingPage = () => {
         <div className="max-w-7xl w-full flex flex-col mx-auto gap-40 px-10">
           <div className="flex gap-10">
             <div className="">
-              <CImg src={landingFunction_1} alt="설명1" />
+              <CImg src={landingFunction_1} loading="lazy" alt="설명1" />
             </div>
             <div className="flex flex-col gap-3 justify-center">
               <p className="pb-6 text-primary-50 text-title-h4">내 보험 관리의 시작</p>
@@ -157,7 +157,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="">
-              <CImg src={landingFunction_2} alt="설명2" />
+              <CImg src={landingFunction_2} loading="lazy" alt="설명2" />
             </div>
           </div>
         </div>
@@ -174,7 +174,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div>
-            <CImg className="md:object-contain" src={landingFunction_3} alt="소개" />
+            <CImg className="md:object-contain" loading="lazy" src={landingFunction_3} alt="소개" />
           </div>
         </div>
       </section>
@@ -183,13 +183,13 @@ const LandingPage = () => {
       <section className="w-full py-40">
         <div className="h-full flex flex-col gap-30 items-center justify-center">
           <div className="flex w-full items-center justify-center gap-30">
-            <CImg className="w-1/3" src={landingLogoType} alt="로고" />
+            <CImg className="w-1/3" loading="lazy" src={landingLogoType} alt="로고" />
             <div className="relative flex flex-col gap-15">
               <p className="text-title-h1">
                 실손핏과 보험을 더 쉽게, <br />
                 내게 핏하게 이해해보세요.
               </p>
-              <CImg className="absolute -right-5 -top-10" src={landingOutro} alt="체크" />
+              <CImg className="absolute -right-5 -top-10" loading="lazy" src={landingOutro} alt="체크" />
               <CButton
                 onClick={() => navigate('/home')}
                 className="bg-primary-50 text-white md:rounded-xl px-24 py-4 cursor-pointer"

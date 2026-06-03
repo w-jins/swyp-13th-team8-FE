@@ -70,7 +70,7 @@ const Terms = () => {
               <span className="text-primary-50">약관 내용에 동의</span>가 필요해요.
             </p>
             <div>
-              <CImg className="w-70 sm:py-5 md:py-0" src={terms} alt="로고 이미지" />
+              <CImg className="w-70 sm:py-5 md:py-0" loading="eager" fetchPriority="high" src={terms} alt="로고 이미지" />
             </div>
           </div>
           <div className="flex flex-col items-center sm:gap-5 md:gap-15 w-full justify-end md:h-115.75">
@@ -79,7 +79,7 @@ const Terms = () => {
                 onClick={clickHandler}
                 className="px-5 py-4 w-full gap-5 flex justify-start  rounded-2xl cursor-pointer border-b-gray-scale-20"
               >
-                <CImg src={isAllChecked ? checkOn : check} alt="체크" />
+                <CImg src={isAllChecked ? checkOn : check} fetchPriority="low" alt="체크" />
                 <p className="text-gray-scale-70 text-title-h4">전체 내용에 동의합니다.</p>
               </CButton>
               <span className="sm:hidden w-full border border-gray-scale-20"></span>
@@ -90,7 +90,7 @@ const Terms = () => {
                     key={items.id}
                     className="w-full gap-5 flex flex-row justify-start md:p-0 cursor-pointer"
                   >
-                    <CImg src={items.check ? checkOn : check} alt="체크" />
+                    <CImg src={items.check ? checkOn : check} fetchPriority="low" alt="체크" />
                     <p className=" text-gray-scale-70 text-body-l-m">{items.label}</p>
                     <span className="text-primary-30 text-body-l-r">(필수)</span>
                     {items.url ? <CImg onClick={(e) => goExternalLink(e, items.url)} className="ml-auto" src={right} alt="이동하기" /> : ''}

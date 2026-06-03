@@ -18,7 +18,7 @@ const Guide = () => {
         {/* 2. 상단 히어로 배너 */}
         <section className="bg-[#3F7DFA] rounded-3xl md:rounded-tl-full md:rounded-bl-full  text-white shadow-sm">
           <div className="relative p-12 lg:p-16">
-            <CImg className="hidden md:block absolute bottom-0 right-5" src={guideBanner} alt="메인 배너" />
+            <CImg className="hidden md:block absolute bottom-0 right-5" loading="eager" fetchPriority="high" src={guideBanner} alt="메인 배너" />
             <p className="text-title-h1 font-bold mb-6 tracking-tight">실손핏, 핏하게 이해해보세요.</p>
             <p className="text-blue-50 text-base text-body-sm-r leading-relaxed font-medium">
               보험 기초 이해부터 기능 사용법까지,
@@ -37,8 +37,8 @@ const Guide = () => {
               onClick={() => navigate('/guide/feature')}
               className="flex flex-col relative justify-center cursor-pointer transition-transform hover:-translate-y-1"
             >
-              <CImg className="w-full block object-top-left" src={guideIconAbility} alt="배경이미지" />
-              <CImg className="hidden md:block absolute bottom-7 right-5" src={guideAbility} alt="기능카드" />
+              <CImg className="w-full block object-top-left" fetchPriority="low" src={guideIconAbility} alt="배경이미지" />
+              <CImg className="hidden md:block absolute bottom-7 right-5" fetchPriority="low" src={guideAbility} alt="기능카드" />
 
               <div className="absolute inset-0 flex flex-col justify-center pl-7 z-10">
                 <p className="text-title-h4 md:text-title-h3 pb-2">기능 한눈에 보기</p>
@@ -58,8 +58,8 @@ const Guide = () => {
                   도출된 분석, 계산 결과를
                   <br />더 똑똑하게 읽어볼까요?
                 </p>
-                <CImg className="absolute left-5 bottom-5" src={guideIconBannerArrow} alt="결과 이해하기" />
-                <CImg className="absolute right-7 bottom-10" src={guideResult} alt="결과 이해하기" />
+                <CImg className="absolute left-5 bottom-5" fetchPriority="low" src={guideIconBannerArrow} alt="결과 이해하기" />
+                <CImg className="absolute right-7 bottom-10" fetchPriority="low" src={guideResult} alt="결과 이해하기" />
               </div>
               <div
                 onClick={() => navigate('/guide/question')}
@@ -71,8 +71,8 @@ const Guide = () => {
                   <br />
                   답변을 모아봤어요.
                 </p>
-                <CImg className="absolute right-7 bottom-10" src={guideFAQ} alt="결과 이해하기" />
-                <CImg className="absolute left-5 bottom-5" src={guideIconBannerArrow} alt="결과 이해하기" />
+                <CImg className="absolute right-7 bottom-10" fetchPriority="low" src={guideFAQ} alt="결과 이해하기" />
+                <CImg className="absolute left-5 bottom-5" fetchPriority="low" src={guideIconBannerArrow} alt="결과 이해하기" />
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@ const Guide = () => {
                   <div className="flex items-center gap-4">
                     {/* 이미지 자리 표시자 */}
                     <div className={`w-[52px] h-[52px] rounded-full ${item.bgColor} `}>
-                      <CImg className="rounded-full" src={item.imgSrc} alt="사진" />
+                      <CImg className="rounded-full" fetchPriority="low" src={item.imgSrc} alt="사진" />
                     </div>
                     <div className="flex flex-col gap-1">
                       <span className="text-[13px] font-semibold text-[#5284FA]">{item.category}</span>

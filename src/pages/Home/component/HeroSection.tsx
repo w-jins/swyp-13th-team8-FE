@@ -14,7 +14,7 @@ const HeroSection = () => {
         <br />
         얼마나 돌려받을 수 있을까?
       </div>
-      <CImg className="absolute inset-0 w-full h-full rounded-3xl sm:object-right" src={main} alt="메인 베너" />
+      <CImg className="absolute inset-0 w-full h-full rounded-3xl sm:object-right" src={main} fetchPriority="high" alt="메인 베너" />
     </div>
   );
 };
