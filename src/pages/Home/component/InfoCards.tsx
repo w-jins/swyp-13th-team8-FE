@@ -15,14 +15,14 @@ const InfoCards = () => {
         className="relative w-full h-1/2 rounded-tr-[60px] rounded-bl-[60px] rounded-3xl bg-[#E4EDFF] bg-linear-to-b from-[#CDDFFF] to-[#EBF3FF] text-primary-50 p-8 cursor-pointer shadow-[inset_0_0_20px_rgba(99,156,255,0.4)]"
       >
         <p className="relative text-title-h4">약관분석</p>
-        <CImg className="absolute bottom-0 right-5 w-40" src={mainAnalysis} alt="약관분석 이동" />
+        <CImg className="absolute bottom-0 right-5 w-40" loading="eager" src={mainAnalysis} alt="약관분석 이동" />
       </div>
       <div
         onClick={() => navigate('/guide')}
         className="relative w-full h-1/2 rounded-tr-[60px] rounded-bl-[60px] rounded-3xl bg-[#E4EDFF] bg-linear-to-b from-[#CDDFFF] to-[#EBF3FF] text-primary-50 p-8 cursor-pointer shadow-[inset_0_0_20px_rgba(99,156,255,0.4)]"
       >
         <p className="relative text-title-h4">실손보험 가이드</p>
-        <CImg className="absolute bottom-0 right-5 w-40" src={mainGuide} alt="보험가이드 이동" />
+        <CImg className="absolute bottom-0 right-5 w-40" loading="eager" src={mainGuide} alt="보험가이드 이동" />
       </div>
     </div>
   );

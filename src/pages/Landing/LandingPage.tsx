@@ -38,7 +38,7 @@ const LandingPage = () => {
       {/* 1. 메인 섹션 */}
       <section className="relative w-full max-w-7xl h-137 mx-auto mb-180 bg-linear-to-b from-[#D9D9D9] to-[#FFFFFF] rounded-t-[40px]">
         <div>
-          <CImg src={heroBg} alt="메인 히어로 배너" />
+          <CImg src={heroBg} loading="eager" fetchPriority="high" alt="메인 히어로 배너" />
         </div>
         <div className="absolute flex flex-col gap-4 top-30 left-15">
           <p className="text-title-h1">

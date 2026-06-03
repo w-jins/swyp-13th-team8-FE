@@ -17,7 +17,7 @@ const GuideBanner = () => {
         <div className="relative z-10">
           <p className="font-bold">자주묻는 질문</p>
         </div>
-        <CImg className="absolute bottom-0 right-5 h-auto md:object-contain" src={mainFAQ} alt="FAQ" />
+        <CImg className="absolute bottom-0 right-5 h-auto md:object-contain" loading="eager" src={mainFAQ} alt="FAQ" />
       </div>
 
       {/* 2. 피티 가이드 카드 */}
@@ -31,8 +31,8 @@ const GuideBanner = () => {
             <span className="text-title-h2 font-bold leading-snug">피티와 함께 알아보세요!</span>
           </p>
         </div>
-        <CImg className="absolute bottom-0 right-0 w-4/5" src={mainLanding} alt="랜딩페이지 이동" />
-        <CImg className="absolute bottom-10 left-7" src={mainArrow} alt="화살표" />
+        <CImg className="absolute bottom-0 right-0 w-4/5" loading="eager" src={mainLanding} alt="랜딩페이지 이동" />
+        <CImg className="absolute bottom-10 left-7" loading="eager" src={mainArrow} alt="화살표" />
       </div>
     </div>
   );

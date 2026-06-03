@@ -25,7 +25,7 @@ const Sidebar = () => {
                 className={`cursor-pointer w-full text-left xl:px-5 py-4 flex justify-start gap-2 xl:gap-3 flex-col xl:flex-row ${isActive ? 'text-blue-200 ' : 'text-gray-800'}`}
                 variant={isActive ? 'tertiary' : undefined}
               >
-                <CImg src={isActive ? item.hover : item.src} alt={item.label} />
+                <CImg src={isActive ? item.hover : item.src} loading="eager" fetchPriority="high" alt={item.label} />
                 <span className="inline-block text-body-s-m xl:text-body-m-m whitespace-nowrap">{item.label}</span>
               </CButton>
             )}
@@ -40,7 +40,7 @@ const Sidebar = () => {
             완벽 가이드
           </p>
           <CButton className="bg-primary-80 text-white md:px-2 md:py-1" children="바로가기" />
-          <CImg className="absolute bottom-3 right-2" src={sidebar} alt="바로가기" />
+          <CImg className="absolute bottom-3 right-2" loading="eager" fetchPriority="high" src={sidebar} alt="바로가기" />
         </div>
       </div>
     </aside>
