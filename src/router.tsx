@@ -27,71 +27,52 @@ const router = createBrowserRouter([
     element: <EntryRoute />,
   },
   {
-    // 로그인 페이지
-    path: '/login',
-    element: <></>,
-  },
-  {
-    // 홈 페이지
-    path: '/home',
+    path: '/',
     element: <AppLayout />,
     children: [
-      // 홈 페이지 컴포넌트
-      { index: true, element: <Home /> },
-    ],
-  },
-  {
-    // 약관 페이지
-    path: '/terms',
-    element: <AppLayout />,
-    children: [
+      // 홈 페이지
+      { path: 'home', element: <Home /> },
       // 약관 페이지
-      { index: true, element: <Terms /> },
-    ],
-  },
-  {
-    // 환급금 계산기 페이지
-    path: '/calculator',
-    element: <AppLayout />,
-    children: [
+      { path: 'terms', element: <Terms /> },
       // 환급금 계산기 페이지
-      { index: true, element: <Calculator /> },
-      { path: 'medical-info', element: <MedicalInfo /> },
-      { path: 'refund-result', element: <RefundResult /> },
-    ],
-  },
-  {
-    // 약관 분석 페이지
-    path: '/analysis',
-    element: <AppLayout />,
-    children: [
-      // 약관 분석 페이지 컴포넌트
-      { index: true, element: <Analysis /> },
-      { path: 'result', element: <AnalysisResult /> },
-      { path: 'result/:id', element: <AnalysisResult /> },
-    ],
-  },
-  {
-    // 마이페이지
-    path: '/mypage',
-    element: <AppLayout />,
-    children: [
-      // 마이페이지 컴포넌트
-      { index: true, element: <MyPage /> },
-      { path: 'setting', element: <Setting /> },
-      { path: 'insurance', element: <InsurancePage /> },
-      { path: 'insurance/add', element: <AddInsurancePage /> },
-      { path: 'saved-history', element: <SavePage /> },
-    ],
-  },
-  {
-    path: '/guide',
-    element: <AppLayout />,
-    children: [
-      { index: true, element: <Guide /> },
-      { path: 'question', element: <Question /> },
-      { path: 'feature', element: <FeatureGuidePage /> },
-      { path: 'edi', element: <EdiGuidePage /> },
+      {
+        path: 'calculator',
+        children: [
+          { index: true, element: <Calculator /> },
+          { path: 'medical-info', element: <MedicalInfo /> },
+          { path: 'refund-result', element: <RefundResult /> },
+        ],
+      },
+      // 약관 분석 페이지
+      {
+        path: 'analysis',
+        children: [
+          { index: true, element: <Analysis /> },
+          { path: 'result', element: <AnalysisResult /> },
+          { path: 'result/:id', element: <AnalysisResult /> },
+        ],
+      },
+      // 마이 페이지
+      {
+        path: 'mypage',
+        children: [
+          { index: true, element: <MyPage /> },
+          { path: 'setting', element: <Setting /> },
+          { path: 'insurance', element: <InsurancePage /> },
+          { path: 'insurance/add', element: <AddInsurancePage /> },
+          { path: 'saved-history', element: <SavePage /> },
+        ],
+      },
+      // 가이드 페이지
+      {
+        path: 'guide',
+        children: [
+          { index: true, element: <Guide /> },
+          { path: 'question', element: <Question /> },
+          { path: 'feature', element: <FeatureGuidePage /> },
+          { path: 'edi', element: <EdiGuidePage /> },
+        ],
+      },
     ],
   },
 ]);
