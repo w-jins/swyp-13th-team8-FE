@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { deleteHistory, getHistories, toggleFavorite } from '../../../api/analysisApi';
-import type { HistoryResponse } from '../../../type/responseType';
+import { deleteHistory, getHistories, toggleFavorite } from '@/api/analysisApi';
+import type { HistoryResponse } from '@/type/responseType';
 import AnalysisCard from './AnalysisCard';
 
 const HistoryAnalysis = () => {
