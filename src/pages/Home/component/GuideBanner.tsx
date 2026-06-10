@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
-import { mainArrow, mainFAQ, mainLanding } from '../../../assets';
-import CImg from '../../../components/common/CImg';
+import { mainArrow, mainFAQ, mainLanding } from '@/assets';
+import { CImg } from '@/components/common/index';
 
 /**
  * 왼쪽 아래 가이드 배너

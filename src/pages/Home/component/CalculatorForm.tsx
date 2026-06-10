@@ -1,13 +1,11 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
-import CButton from '../../../components/common/CButton';
-import CInput from '../../../components/common/CInput';
-import CRadio from '../../../components/common/CRadio';
-import { PURPOSE_TYPE, TREATMENT_CATEGORY, VISIT_TYPE } from '../../../constants/insurance.ts';
-import { useUserStore } from '../../../store/useUserStore';
-import { useModalStore } from '../../../store/useModalStore';
+import { CButton, CInput, CRadio } from '@/components/common/index';
+import { PURPOSE_TYPE, TREATMENT_CATEGORY, VISIT_TYPE } from '@/constants/insurance.ts';
+import { useUserStore } from '@/store/useUserStore';
+import { useModalStore } from '@/store/useModalStore';
 import { useNavigate } from 'react-router';
-import { useCalcStore } from '../../../store/useCalcStore';
-import { useAuthStore } from '../../../store/useAuthStore';
+import { useCalcStore } from '@/store/useCalcStore';
+import { useAuthStore } from '@/store/useAuthStore';
 
 /**
  * 계산기

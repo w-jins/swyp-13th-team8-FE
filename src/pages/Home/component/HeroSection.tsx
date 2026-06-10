@@ -1,5 +1,5 @@
-import { main } from '../../../assets';
-import CImg from '../../../components/common/CImg';
+import { main } from '@/assets';
+import { CImg } from '@/components/common/index';
 
 /**
  * 메인 페이지 가장 큰 배너

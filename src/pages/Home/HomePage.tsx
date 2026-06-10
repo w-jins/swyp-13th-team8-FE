@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useCalcStore } from '../../store/useCalcStore.ts';
+import { useCalcStore } from '@/store/useCalcStore.ts';
 import CalculatorForm from './component/CalculatorForm.tsx';
 import GuideBanner from './component/GuideBanner.tsx';
 import HeroSection from './component/HeroSection.tsx';
-import InfoCards from './component/InfoCards.tsx';
+import InfoSection from './component/InfoSection.tsx';
 
 /**
  * 메인 페이지 레이아웃 및 배치 컴포넌트
@@ -19,7 +19,7 @@ const Home = () => {
       {/* 상단 섹션 */}
       <div className="flex flex-col md:flex-row w-full gap-5">
         <HeroSection />
-        <InfoCards />
+        <InfoSection />
       </div>
       {/* 하단 섹션 */}
       <div className="flex flex-col md:flex-row w-full gap-5 flex-1">
