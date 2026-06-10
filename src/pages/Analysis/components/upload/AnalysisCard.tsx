@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router';
-import CButton from '../../../components/common/CButton';
-import CImg from '../../../components/common/CImg';
-import { formatDate } from '../../../hooks/useFormatDate';
-import type { HistoryResponse } from '../../../type/responseType';
-import { history, historyHover } from '../../../assets';
-import useCompanyImg from '../../../hooks/useCompanyImg';
+import { CButton, CImg } from '@/components/common/index';
+import { formatDate } from '@/hooks/useFormatDate';
+import type { HistoryResponse } from '@/type/responseType';
+import { history, historyHover } from '@/assets';
+import useCompanyImg from '@/hooks/useCompanyImg';
 
 interface AnalysisCardProps {
   item: HistoryResponse;

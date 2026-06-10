@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import CImg from '../../../components/common/CImg';
-import CButton from '../../../components/common/CButton';
-import { useModalStore } from '../../../store/useModalStore';
-import { analysisAI, sseConnectAPI } from '../../../api/analysisApi';
-import { useAuthStore } from '../../../store/useAuthStore';
-import { useAnalysisStore } from '../../../store/useAnalysisStore';
+import { CImg, CButton } from '@/components/common/index';
+import { useModalStore } from '@/store/useModalStore';
+import { analysisAI, sseConnectAPI } from '@/api/analysisApi';
+import { useAuthStore } from '@/store/useAuthStore';
+import { useAnalysisStore } from '@/store/useAnalysisStore';
 import { useNavigate } from 'react-router';
-import { useCalcStore } from '../../../store/useCalcStore';
-import { insadd, insurance, pdf, upload } from '../../../assets';
+import { useCalcStore } from '@/store/useCalcStore';
+import { insadd, insurance, pdf, upload } from '@/assets';
 
 interface PdfUploaderProps {
   name: string;
